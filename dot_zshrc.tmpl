@@ -124,14 +124,6 @@ zstyle ':omz:plugins:nvm' silent-autoload no
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
-# A helper function to get an API key from 1Password.
-function get_op_field_value() {
-    local item_name="$1"
-    local field_name="$2"
-    local api_key="$(op item get "$item_name" --fields "$field_name")"
-    echo $api_key
-}
-
 CD_LS_COMMAND="ls -lAFh"                                                 # This is for the cd-ls plugin to show the contents of a directory when you cd into it.
 DISABLE_AUTO_UPDATE="true"                                               # Disable Oh My Zsh autoupdate becase it does not work well with chezmoi.
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"               # Autocompletion for Homebrew commands.
