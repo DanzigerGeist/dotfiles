@@ -1,0 +1,162 @@
+[".oh-my-zsh"]
+    type = "archive"
+    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/themes/powerlevel10k"]
+    type = "archive"
+    url = "https://github.com/romkatv/powerlevel10k/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/alias-tips"]
+    type = "archive"
+    url = "https://github.com/djui/alias-tips/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/fzf-tab"]
+    type = "archive"
+    url = "https://github.com/Aloxaf/fzf-tab/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-ai-commands"]
+    type = "archive"
+    url = "https://github.com/muePatrick/zsh-ai-commands/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-not-vim"]
+    type = "archive"
+    url = "https://github.com/redxtech/zsh-not-vim/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-256color"]
+    type = "archive"
+    url = "https://github.com/chrissicool/zsh-256color/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/jq"]
+    type = "archive"
+    url = "https://github.com/reegnz/jq-zsh-plugin/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-fzf-packagemanager"]
+    type = "archive"
+    url = "https://github.com/goarano/zsh-fzf-packagemanager/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zman"]
+    type = "archive"
+    url = "https://github.com/mattmc3/zman/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/omz-homebrew"]
+    type = "archive"
+    url = "https://github.com/digitalraven/omz-homebrew/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/psgrep"]
+    type = "archive"
+    url = "https://github.com/voidzero/omz-plugin-psgrep/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-ask"]
+    type = "archive"
+    url = "https://github.com/Licheam/zsh-ask/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-plugin-require"]
+    type = "archive"
+    url = "https://github.com/aubreypwd/zsh-plugin-require/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/cd-reminder"]
+    type = "archive"
+    url = "https://github.com/bartboy011/cd-reminder/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/cd-ls"]
+    type = "archive"
+    url = "https://github.com/zshzoo/cd-ls/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-fzf-pass"]
+    type = "archive"
+    url = "https://github.com/smeagol74/zsh-fzf-pass/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-hist-delete-fzf"]
+    type = "archive"
+    url = "https://github.com/p1r473/zsh-hist-delete-fzf/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-random-quotes"]
+    type = "archive"
+    url = "https://gitlab.com/vkolagotla/zsh-random-quotes/-/archive/master/zsh-random-quotes-master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-watch"]
+    type = "archive"
+    url = "https://github.com/Thearas/zsh-watch/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-completions"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-completions/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/example"]
+    type = "archive"
+    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-history-substring-search"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-history-substring-search/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/prettyping"]
+    type = "archive"
+    url = "https://github.com/unixorn/prettyping/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/timewarrior"]
+    type = "archive"
+    url = "https://github.com/svenXY/timewarrior/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
