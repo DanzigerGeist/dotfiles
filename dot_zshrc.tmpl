@@ -128,8 +128,8 @@ CD_LS_COMMAND="ls -lAFh"                                                 # This 
 DISABLE_AUTO_UPDATE="true"                                               # Disable Oh My Zsh autoupdate becase it does not work well with chezmoi.
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"               # Autocompletion for Homebrew commands.
 NVM_HOMEBREW="$(brew --prefix nvm)"                                      # This is for the nvm plugin to use the Homebrew-installed nvm.
-ZSH_ASK_API_KEY="{{ onepasswordRead "op://Personal/ChatGPT/API Key" }}"  # OpenAI API key for the zsh-ai-commands plugin. 
-ZSH_AI_COMMANDS_OPENAI_API_KEY="{{ onepasswordRead "op://Personal/ChatGPT/API Key" }}" # OpenAI API key for the zsh-ai-commands plugin. 
+ZSH_ASK_API_KEY="{{ onepasswordRead "op://Personal/Verified/API Key" }}"  # OpenAI API key for the zsh-ai-commands plugin. 
+ZSH_AI_COMMANDS_OPENAI_API_KEY="{{ onepasswordRead "op://Verified/ChatGPT/API Key" }}" # OpenAI API key for the zsh-ai-commands plugin. 
 ZSH_WEB_SEARCH_ENGINES=(
     reddit "https://www.reddit.com/search/?q="
 )
