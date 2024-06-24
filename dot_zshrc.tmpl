@@ -1,0 +1,166 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+export ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# List of plugins for OhMyZsh. Might need to revisit this list.
+plugins=(
+    aliases
+    alias-finder
+    alias-tips
+    ansible
+    autoenv
+    aws
+    azure
+    brew
+    cd-ls
+    cd-reminder
+    chruby
+    chucknorris
+    colored-man-pages
+    colorize
+    command-not-found
+    common-aliases
+    copyfile
+    copypath
+    doctl
+    encode64
+    extract
+    fd
+    fzf
+    fzf-tab
+    gcloud
+    gh
+    gitfast
+    gitignore
+    golang
+    gpg-agent
+    gradle
+    helm
+    history
+    httpie
+    isodate
+    iterm2
+    jenv
+    jfrog
+    jira
+    jsontools
+    jq
+    keychain
+    kops
+    kubectl
+    kubectx
+    macos
+    man
+    nmap
+    npm
+    nvm
+    oc
+    omz-homebrew
+    pip
+    prettyping
+    psgrep
+    pylint
+    python
+    qrcode
+    redis-cli
+    repo
+    ripgrep
+    rsync
+    spring
+    sudo
+    taskwarrior
+    timewarrior
+    terraform
+    thefuck
+    themes
+    tig
+    tmux
+    torrent
+    universalarchive
+    urltools
+    vagrant
+    virtualenv
+    virtualenvwrapper
+    vundle
+    wakeonlan
+    watson
+    web-search
+    wp-cli
+    xcode
+    zman
+    zsh-ai-commands
+    zsh-autosuggestions
+    zsh-completions
+    zsh-fzf-packagemanager
+    zsh-fzf-pass
+    zsh-interactive-cd
+    zsh-navigation-tools
+    zsh-not-vim
+    zsh-256color
+    zsh-syntax-highlighting
+    zsh-hist-delete-fzf
+    zsh-history-substring-search
+    zsh-random-quotes
+    zsh-plugin-require
+    zsh-watch
+)
+
+zstyle ':omz:plugins:alias-finder' autoload no # disabled by default
+zstyle ':omz:plugins:alias-finder' longer no # disabled by default
+zstyle ':omz:plugins:alias-finder' exact no # disabled by default
+zstyle ':omz:plugins:alias-finder' cheaper no # disabled by default
+zstyle ':omz:plugins:docker' legacy-completion no
+zstyle ':omz:plugins:iterm2' shell-integration yes
+zstyle ':omz:plugins:keychain' agents gpg,ssh
+zstyle ':omz:plugins:nvm' lazy yes
+zstyle ':omz:plugins:nvm' lazy-cmd eslint prettier typescript
+zstyle ':omz:plugins:nvm' autoload yes
+zstyle ':omz:plugins:nvm' silent-autoload no
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
+# A helper function to get an API key from 1Password.
+function get_op_field_value() {
+    local item_name="$1"
+    local field_name="$2"
+    local api_key="$(op item get "$item_name" --fields "$field_name")"
+    echo $api_key
+}
+
+CD_LS_COMMAND="ls -lAFh"                                                 # This is for the cd-ls plugin to show the contents of a directory when you cd into it.
+DISABLE_AUTO_UPDATE="true"                                               # Disable Oh My Zsh autoupdate becase it does not work well with chezmoi.
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"               # Autocompletion for Homebrew commands.
+NVM_HOMEBREW="$(brew --prefix nvm)"                                      # This is for the nvm plugin to use the Homebrew-installed nvm.
+ZSH_ASK_API_KEY="{{ onepasswordRead "op://Personal/ChatGPT/API Key" }}"  # OpenAI API key for the zsh-ai-commands plugin. 
+ZSH_AI_COMMANDS_OPENAI_API_KEY="{{ onepasswordRead "op://Personal/ChatGPT/API Key" }}" # OpenAI API key for the zsh-ai-commands plugin. 
+ZSH_WEB_SEARCH_ENGINES=(
+    reddit "https://www.reddit.com/search/?q="
+)
+
+# Initialize Oh My Zsh.
+source $ZSH/oh-my-zsh.sh
+
+# Enable the Command-Not-Found package for Homebrew 
+HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
+if [ -f "$HB_CNF_HANDLER" ]; then
+    source "$HB_CNF_HANDLER";
+fi
+
+export EDITOR="nvim"    # Set the default editor to Neovim
+
+alias cat="ccat"        # This will use the `ccat` command to colorize the output of `cat`.
+alias less="cless"      # This will use the `cless` command to colorize the output of `less`.
+alias man="colored man" # This will use the `colored` command to colorize the output of `man`.
+alias ping="prettyping" # A wrapper around `ping` that makes the output prettier. 
+alias vim="nvim"        # Don't do this at home, kids. This is just for me.
+
+# Enable iTerm2 shell integration.
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
