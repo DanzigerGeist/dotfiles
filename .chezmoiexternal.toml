@@ -76,9 +76,9 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
-[".oh-my-zsh/custom/plugins/zsh-ask"]
+[".oh-my-zsh/custom/plugins/zsh-ollama-command"]
     type = "archive"
-    url = "https://github.com/Licheam/zsh-ask/archive/master.tar.gz"
+    url = "https://github.com/plutowang/zsh-ollama-command/archive/master.tar.gz"
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
