@@ -7,7 +7,8 @@ return { 'williamboman/mason-lspconfig.nvim',
     require('mason-lspconfig').setup({
       ensure_installed = { 
         'lua_ls',
-        'terraformls'
+        'terraformls',
+        'pyright'
       },
       automatic_installation = true,
     })

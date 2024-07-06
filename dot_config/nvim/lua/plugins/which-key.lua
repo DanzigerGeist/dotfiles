@@ -1,7 +1,21 @@
-return { "folke/which-key.nvim",
-  init = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
+return {
+  "folke/which-key.nvim",
+  opts = {
+    defaults = {
+      ["<leader>b"] = { name = "Browse Files / Buffers / Etc." },
+      ["<leader>f"] = { name = "Find Files / Strings" },
+      ["<leader>i"] = { name = "Interactive Tools" },
+      ["<leader>l"] = { name = "LSP Functions" },
+      ["<leader>lg"] = { name = "Go To Code..." },
+      ["<leader>s"] = { name = "Split" },
+      ["<leader>t"] = { name = "Tabs" },
+      ["<leader>bg"] = { name = "Git..." },
+
+    },
+  },
+  config = function(_, opts)
+    local wk = require("which-key")
+    wk.setup(opts)
+    wk.register(opts.defaults)
   end,
-  opts = {}
 }
