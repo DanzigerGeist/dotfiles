@@ -1,5 +1,8 @@
 return {
   "folke/which-key.nvim",
+  dependencies = {
+    "echasnovski/mini.icons"
+  },
   opts = {
     defaults = {
       ["<leader>b"] = { name = "Browse Files / Buffers / Etc." },
