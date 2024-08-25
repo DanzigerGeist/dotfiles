@@ -104,7 +104,7 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 -- Interactive Tools
 keymap.set("n", "<leader>il", "<cmd>Mason<CR>", { desc = "LSP Manager" })
-keymap.set("n", "<leader>ip", "<cmd>Lazy<CR>", { desc = "Plugin Manager)" })
+keymap.set("n", "<leader>ip", "<cmd>Lazy<CR>", { desc = "Plugin Manager" })
 keymap.set("n", "<leader>ig", "<cmd>LazyGit<CR>", { desc = "Git" })
 keymap.set("n", "<leader>id", "<cmd>Lazydocker<CR>", { desc = "Docker" })
 
