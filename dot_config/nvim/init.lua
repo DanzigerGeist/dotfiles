@@ -1,4 +1,3 @@
-
 local global = vim.g      -- Global variables
 local opt = vim.opt       -- Set options (global/buffer/windows-scoped)
 local keymap = vim.keymap -- Set Keymaps
