@@ -185,6 +185,7 @@ plugins_custom=(
 # Merge built-in and custom plugins into a single list.
 plugins=(${plugins_standard[@]} ${plugins_custom[@]})
 
+# Install OMZ if it is not present.
 ensure_omz_itself_installed() {
   local omz_dir="$1"
   if [ ! -d "$omz_dir" ]; then
@@ -193,6 +194,7 @@ ensure_omz_itself_installed() {
   fi
 }
 
+# Checks if the specified theme is present in OMZ custom folder.
 ensure_omz_themes_installed() {
   local resource_name="$1"
   local resource_url="$2"
@@ -203,6 +205,7 @@ ensure_omz_themes_installed() {
   fi
 }
 
+# Checks if the specified plugin is present in OMZ custom folder.
 ensure_omz_plugin_installed() {
   local resource_name="$1"
   local resource_url="$2"
@@ -220,6 +223,7 @@ ensure_omz_plugin_installed() {
   fi
 }
 
+# Purge everything that is not listed in the plugins_custom.
 delete_omz_unused_plugins() {
     local omz_custom_plugins_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins"
     if [[ ! -d $omz_custom_plugins_dir ]]; then
