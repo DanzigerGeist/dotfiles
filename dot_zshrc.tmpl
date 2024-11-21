@@ -25,10 +25,12 @@ ZSH_DOTENV_PROMPT=true                              # [dotenv] Set to false if y
 ZSH_FAST_ALIAS_TIPS_EXCLUDES=""                     # [zsh-fast-alias-tips] List of aliases to exclude from hints. 
 ZSH_FAST_ALIAS_TIPS_PREFIX="💡 Alias: $(tput bold)" # [zsh-fast-alias-tips] Set the hint prefix. 
 ZSH_FAST_ALIAS_TIPS_SUFFIX=$(tput sgr0)             # [zsh-fast-alias-tips] Set the hint suffix. 
+{{- if eq .chezmoi.hostname "DanzigerGeist.local" }}
 ZSH_OLLAMA_COMMANDS=5                               # [zsh-ollama-command] Limit the suggested commands for Ollama.
 ZSH_OLLAMA_COMMANDS_HOTKEY=^O                       # [zsh-ollama-command] Shortcut for the Ollama-based completions.
 ZSH_OLLAMA_MODEL=codellama:13b                      # [zsh-ollama-command] Model for Ollama-based completions.
 ZSH_OLLAMA_URL=http://localhost:11434               # [zsh-ollama-command] Ollama server API endpoint.
+{{- end }}
 ZSH_THEME=powerlevel10k/powerlevel10k               # [oh-my-zsh] Set the ZSH theme.
 ZSH_THEME_AZURE_PREFIX="<az:"                       # [azure] Sets the prefix of the azure_subscription.
 ZSH_THEME_AZURE_SUFFIX=">"                          # [azure] Sets the suffix of the azure_subscription.
@@ -177,7 +179,9 @@ plugins_custom=(
     zsh-help                       # A zsh plugin to colorize `XXX --help`.
     zsh-history-filter             # Automatically exclude commands from being inserted into your permanent history.
     zsh-not-vim                    # Shames the user for forgetting they weren't in vim.
+{{- if eq .chezmoi.hostname "DanzigerGeist.local" }}
     zsh-ollama-command             # Integrates the Ollama AI model with fzf to provide intelligent command suggestions.
+{{- end }}
     zsh-plugin-require             # A function that helps you require commands, e.g. require <command> <install command>.
     zsh-show-path                  # Shows the $PATH line by line.
 )
