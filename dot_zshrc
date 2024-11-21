@@ -136,9 +136,9 @@ plugins_standard=(
     tmux                     # Provides aliases for tmux, the terminal multiplexer.
     universalarchive         # Lets you compress files by a command ua <format> <files>, supporting various compression formats.
     urltools                 # This plugin provides two aliases to URL-encode and URL-decode strings.
-    vscode		               # provides useful aliases to simplify the interaction between the CLI and VS Code.
+    vscode		     # provides useful aliases to simplify the interaction between the CLI and VS Code.
     web-search               # Adds aliases for searching with Google, Wiki, Bing, YouTube and other popular services.
-    z 			                 # Defines the z command that tracks your most visited directories 	
+    z 			     # Defines the z command that tracks your most visited directories 	
     zsh-interactive-cd       # Provides an interactive way to change directories in zsh using fzf.
     zsh-navigation-tools     # Set of tools like n-history, n-cd, n-kill.
 )
