@@ -160,6 +160,7 @@ plugins_custom=(
     nohup                          # Add `nohup` to the current command pressing the `Ctrl + H` shortcut.
     noreallyjustfuckingstopalready # Please OS X (or whatever your name is) just fucking reset your DNS cache please.
     ohmyzsh-full-autoupdate        # Automatically update OMZ plugins as well.
+    ollama                         # Completions for Ollama CLI.
     prettyping                     # Wrapper around the standard ping tool with the objective of making the output prettier, more colorful, more compact, and easier to read.
     psgrep                         # Makes ps grep hide its own process from the results of a ps aux | grep.
     send                           # Turbo git flow: add our changes, submit a commit, pull from upstream (by default, the remote origin) and then push upstream.
@@ -178,7 +179,6 @@ plugins_custom=(
     zsh-history-filter             # Automatically exclude commands from being inserted into your permanent history.
     zsh-not-vim                    # Shames the user for forgetting they weren't in vim.
     zsh-ollama-command             # Integrates the Ollama AI model with fzf to provide intelligent command suggestions.
-    zsh-ollama-completion          # Completions for Ollama CLI.
     zsh-plugin-require             # A function that helps you require commands, e.g. require <command> <install command>.
     zsh-show-path                  # Shows the $PATH line by line.
 )
@@ -263,6 +263,7 @@ ensure_omz_plugin_installed "mkcd"                           "https://github.com
 ensure_omz_plugin_installed "nohup"                          "https://github.com/micrenda/zsh-nohup.git"
 ensure_omz_plugin_installed "noreallyjustfuckingstopalready" "https://github.com/eventi/noreallyjustfuckingstopalready.git"
 ensure_omz_plugin_installed "ohmyzsh-full-autoupdate"        "https://github.com/Pilaton/OhMyZsh-full-autoupdate.git"
+ensure_omz_plugin_installed "ollama"                         "https://github.com/Katrovsky/zsh-ollama-completion.git"
 ensure_omz_plugin_installed "prettyping"                     "https://github.com/unixorn/prettyping.git"
 ensure_omz_plugin_installed "printdocker"                    "https://github.com/elvitin/printdocker-zsh-plugin.git"
 ensure_omz_plugin_installed "psgrep"                         "https://github.com/voidzero/omz-plugin-psgrep.git"
@@ -283,7 +284,6 @@ ensure_omz_plugin_installed "zsh-history-filter"             "https://github.com
 ensure_omz_plugin_installed "zsh-not-vim"                    "https://github.com/redxtech/zsh-not-vim.git"
 ensure_omz_plugin_installed "zsh-notify"                     "https://github.com/luismayta/zsh-notify.git"
 ensure_omz_plugin_installed "zsh-ollama-command"             "https://github.com/plutowang/zsh-ollama-command.git"
-ensure_omz_plugin_installed "zsh-ollama-completion"          "https://github.com/Katrovsky/zsh-ollama-completion.git"
 ensure_omz_plugin_installed "zsh-plugin-require"             "https://github.com/aubreypwd/zsh-plugin-require.git"
 ensure_omz_plugin_installed "zsh-show-path"                  "https://github.com/redxtech/zsh-show-path.git"
 
