@@ -120,7 +120,6 @@ plugins_standard=(
     node                     # This plugin adds node-docs function that opens specific section in Node.js documentation. 
     npm                      # The npm plugin provides completion as well as adding many useful aliases.
     nvm                      # Completions for nvm (Node Version Manager).
-    ollama                   # Completions for Ollama CLI.
     opentofu                 # Completion plugin for OpenTofu, a fork of Terraform that is open-source.
     pip                      # Completions for pip, the Python package manager.
     rsync                    # Aliases for frequent rsync commands.
@@ -179,6 +178,7 @@ plugins_custom=(
     zsh-history-filter             # Automatically exclude commands from being inserted into your permanent history.
     zsh-not-vim                    # Shames the user for forgetting they weren't in vim.
     zsh-ollama-command             # Integrates the Ollama AI model with fzf to provide intelligent command suggestions.
+    zsh-ollama-completion          # Completions for Ollama CLI.
     zsh-plugin-require             # A function that helps you require commands, e.g. require <command> <install command>.
     zsh-show-path                  # Shows the $PATH line by line.
 )
@@ -283,6 +283,7 @@ ensure_omz_plugin_installed "zsh-history-filter"             "https://github.com
 ensure_omz_plugin_installed "zsh-not-vim"                    "https://github.com/redxtech/zsh-not-vim.git"
 ensure_omz_plugin_installed "zsh-notify"                     "https://github.com/luismayta/zsh-notify.git"
 ensure_omz_plugin_installed "zsh-ollama-command"             "https://github.com/plutowang/zsh-ollama-command.git"
+ensure_omz_plugin_installed "zsh-ollama-completion"          "https://github.com/Katrovsky/zsh-ollama-completion.git"
 ensure_omz_plugin_installed "zsh-plugin-require"             "https://github.com/aubreypwd/zsh-plugin-require.git"
 ensure_omz_plugin_installed "zsh-show-path"                  "https://github.com/redxtech/zsh-show-path.git"
 
