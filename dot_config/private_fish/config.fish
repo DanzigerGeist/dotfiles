@@ -15,4 +15,7 @@ if status is-interactive
     thefuck --alias | source
 
     alias config="chezmoi edit --apply"
+    alias telegram='nchat -d ~/.config/nchat/telegram'
+    alias whatsapp='nchat -d ~/.config/nchat/whatsapp'
+    alias mc="mc --nosubshell"
 end
