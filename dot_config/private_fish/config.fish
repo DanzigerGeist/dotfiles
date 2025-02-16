@@ -1,8 +1,9 @@
 if status is-interactive
-    # Setting up Fish shell first.
-    set -U fish_greeting
-    set fish_tmux_autostart true
-    set sponge_purge_only_on_exit true
+    set -U fish_greeting               # Disable the default greeting message.
+    set fish_tmux_autostart true       # Automatically start tmux when opening a new terminal.
+    set fish_tmux_unicode true         # Make tmux use Unicode characters.
+    set fish_tmux_no_alias true        # Don't create aliases for tmux commands.
+    set sponge_purge_only_on_exit true # Only purge failed commands on exit.
 
     # Homebrew's command-not-found handler.
     set HB_CNF_HANDLER (brew --prefix)"/Library/Taps/homebrew/homebrew-command-not-found/handler.fish"
@@ -19,8 +20,8 @@ if status is-interactive
     thefuck --alias | source
 
     # Aliases.
-    alias config="chezmoi edit --apply"
-    alias telegram='nchat -d ~/.config/nchat/telegram'
-    alias whatsapp='nchat -d ~/.config/nchat/whatsapp'
-    alias mc="mc --nosubshell"
+    alias config="chezmoi edit --apply"                # Edit and apply the config files with chezmoi.
+    alias telegram='nchat -d ~/.config/nchat/telegram' # Use Telegram config for nchat.
+    alias whatsapp='nchat -d ~/.config/nchat/whatsapp' # Use WhatsApp config for nchat.
+    alias mc="mc --nosubshell"                         # Makes mc to start instantly.
 end
