@@ -72,8 +72,8 @@ return {
         default_config = {
           cmd = { 'tmux-language-server' },
           filetypes = { 'tmux' },
-          root_markers = { '.tmux.conf' },
-          root_dir = lsp_config.util.root_pattern(".tmux.conf")
+          root_markers = { 'tmux.conf' },
+          root_dir = lsp_config.util.root_pattern("tmux.conf")
         }
       }
     end
