@@ -13,7 +13,7 @@ if status is-interactive
     # Other global variables.
     set -U PATH $PATH /Users/aleksyrudy/.local/bin
     set -U OLLAMA_HOST http://localhost:11434
-    set -U EDITOR nvim
+    set -Gx EDITOR nvim
 
     # Initializing shell utils.
     thefuck --alias | source
