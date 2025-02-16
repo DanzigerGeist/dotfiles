@@ -21,7 +21,7 @@ if status is-interactive
 
     # Aliases.
     alias config="chezmoi edit --apply"                # Edit and apply the config files with chezmoi.
-    alias telegram='nchat -d ~/.config/nchat/telegram' # Use Telegram config for nchat.
-    alias whatsapp='nchat -d ~/.config/nchat/whatsapp' # Use WhatsApp config for nchat.
+    alias telegram='TERM=xterm-256color nchat -d ~/.config/nchat/telegram' # Use Telegram config for nchat.
+    alias whatsapp='TERM=xterm-256color nchat -d ~/.config/nchat/whatsapp' # Use WhatsApp config for nchat.
     alias mc="mc --nosubshell"                         # Makes mc to start instantly.
 end
