@@ -11,8 +11,8 @@ if status is-interactive
     end
 
     # Other global variables.
-    set -U PATH $PATH /Users/aleksyrudy/.local/bin
-    set -U OLLAMA_HOST http://localhost:11434
+    set -gx PATH $PATH /Users/aleksyrudy/.local/bin
+    set -gx OLLAMA_HOST http://localhost:11434
     set -gx EDITOR nvim
 
     # Initializing shell utils.
