@@ -1,5 +1,4 @@
 if status is-interactive
-    set -Ux fifc_editor nvim
     set -U fish_greeting
     set -gx OLLAMA_HOST http://localhost:11434
     set -gx EDITOR nvim
