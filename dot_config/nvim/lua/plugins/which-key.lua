@@ -12,12 +12,12 @@ return {
     local wk = require("which-key")
     wk.add({
       -- Buffers
-      { "<C-b>",        group = "Buffers" },
-      { "<C-b>l",       "<cmd>ls<CR>",                                                   desc = "List Opened Buffers" },
-      { "<C-b>n",       "<cmd>enew<CR>",                                                 desc = "New Buffer" },
-      { "<C-b>q",       "<cmd>bd<CR>",                                                   desc = "Close Buffer" },
-      { "<C-b><Left>",  "<cmd>bp<CR>",                                                   desc = "Previous Buffer" },
-      { "<C-b><Right>", "<cmd>bn<CR>",                                                   desc = "Next Buffer" },
+      { "<leader>b",    group = "Buffers" },
+      { "<leader>bl",       "<cmd>ls<CR>",                                                   desc = "List Opened Buffers" },
+      { "<leader>bn",       "<cmd>enew<CR>",                                                 desc = "New Buffer" },
+      { "<leader>bq",       "<cmd>bd<CR>",                                                   desc = "Close Buffer" },
+      { "<leader>b<Left>",  "<cmd>bp<CR>",                                                   desc = "Previous Buffer" },
+      { "<leader>b<Right>", "<cmd>bn<CR>",                                                   desc = "Next Buffer" },
 
       -- Code
       { "<leader>c",    group = "Code" },
