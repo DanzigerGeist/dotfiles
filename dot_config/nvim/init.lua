@@ -123,3 +123,10 @@ autocmd("FileType", {
     vim.opt_local.conceallevel = 2
   end,
 })
+
+-- Make sure that Terraform files are recognized as `terraform`.
+vim.filetype.add({
+  extension = {
+    tf = "terraform"
+  }
+})
