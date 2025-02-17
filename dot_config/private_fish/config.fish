@@ -4,6 +4,7 @@ if status is-interactive
     set fish_tmux_unicode true         # Make tmux use Unicode characters.
     set fish_tmux_no_alias true        # Don't create aliases for tmux commands.
     set sponge_purge_only_on_exit true # Only purge failed commands on exit.
+    set tide_right_prompt_items "status cmd_duration context jobs direnv node python java go kubectl terraform docker"
 
     # Homebrew's command-not-found handler.
     set HB_CNF_HANDLER (brew --prefix)"/Library/Taps/homebrew/homebrew-command-not-found/handler.fish"
