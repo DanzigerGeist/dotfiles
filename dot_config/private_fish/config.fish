@@ -1,4 +1,10 @@
 if status is-interactive
+    # Bootstrap Fisher (the plugin manager).
+    if not functions -q fisher
+        curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+        fisher install jorgebucaran/fisher
+    end
+
     set -U fish_greeting               # Disable the default greeting message.
     set fish_tmux_autostart true       # Automatically start tmux when opening a new terminal.
     set fish_tmux_unicode true         # Make tmux use Unicode characters.
@@ -20,8 +26,8 @@ if status is-interactive
     thefuck --alias | source
 
     # Aliases.
+    alias mc="mc --nosubshell"                         # Makes mc to start instantly.
     alias config="chezmoi edit --apply"                # Edit and apply the config files with chezmoi.
     alias telegram='TERM=xterm-256color nchat -d ~/.config/nchat/telegram' # Use Telegram config for nchat.
     alias whatsapp='TERM=xterm-256color nchat -d ~/.config/nchat/whatsapp' # Use WhatsApp config for nchat.
-    alias mc="mc --nosubshell"                         # Makes mc to start instantly.
 end
