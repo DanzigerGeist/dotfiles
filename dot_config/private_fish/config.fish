@@ -2,7 +2,7 @@ if status is-interactive
     # Bootstrap Fisher (the plugin manager).
     if not functions -q fisher
         curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
-        fisher install all
+        fisher update 
     end
 
     # Homebrew's command-not-found handler.
