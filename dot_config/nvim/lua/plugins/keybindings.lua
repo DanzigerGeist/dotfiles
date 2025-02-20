@@ -36,6 +36,7 @@ return {
       { "<leader>co",       "<cmd>Telescope lsp_document_symbols<CR>",                       desc = "Symbols (File)" },
       { "<leader>cO",       "<cmd>Telescope lsp_workspace_symbols<CR>",                      desc = "Symbols (Workspace)" },
       { "<leader>cn",       "<cmd>TodoTelescope<cr>",                                        desc = "Notes" },
+      { "<leader>cm",       "<cmd>lua require('peek').open()<CR>",                           desc = "Markdown Preview" },
 
       -- Directory
       { "<leader>d",        group = "Directories" },
