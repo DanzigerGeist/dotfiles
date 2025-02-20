@@ -1,6 +1,8 @@
 local nightfox_config = function()
   require('nightfox').setup({
-    transparent = true
+    options = {
+      transparent = true
+    }
   })
 end
 
