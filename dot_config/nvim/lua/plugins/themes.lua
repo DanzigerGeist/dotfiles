@@ -1,6 +1,6 @@
 local tokyonight_config = function()
   require("tokyonight").setup({
-    style = "night",
+    style = "moon",
     transparent = true
   })
 end
