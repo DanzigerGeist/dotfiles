@@ -76,7 +76,7 @@ require('lazy').setup('plugins', {
 -----------------------------------------------------------
 -- Theme settings
 -----------------------------------------------------------
-vim.cmd [[colorscheme carbonfox]]
+vim.cmd [[colorscheme terafox]]
 
 -----------------------------------------------------------
 -- Keymappings
@@ -120,7 +120,7 @@ autocmd("FileType", {
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = true
-    vim.opt_local.conceallevel = 2
+    vim.opt_local.conceallevel = 0
   end,
 })
 
