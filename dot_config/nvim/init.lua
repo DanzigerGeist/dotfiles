@@ -76,7 +76,7 @@ require('lazy').setup('plugins', {
 -----------------------------------------------------------
 -- Theme settings
 -----------------------------------------------------------
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme carbonfox]]
 
 -----------------------------------------------------------
 -- Keymappings
