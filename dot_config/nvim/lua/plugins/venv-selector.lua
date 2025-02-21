@@ -1,4 +1,3 @@
--- TODO: need to map the selector to a keybinding
 return {
   'linux-cultist/venv-selector.nvim',
   lazy = false,
