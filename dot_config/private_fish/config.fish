@@ -12,6 +12,7 @@ if status is-interactive
     end
 
     # Global variables.
+    set -gx ATAC_MAIN_DIR ~/.atac/
     set -gx GOPATH $HOME/.go
     set -gx PATH $PATH $GOPATH /Users/aleksyrudy/.local/bin
     set -gx OLLAMA_HOST http://localhost:11434
@@ -25,6 +26,11 @@ if status is-interactive
 
     # Initializing shell utils.
     thefuck --alias | source
+
+    # Create the Atac directory if it doesn't exist.
+    if not test -d $ATAC_MAIN_DIR
+        mkdir -p $ATAC_MAIN_DIR
+    end
 
     # Aliases.
     alias mc="mc --nosubshell"                         # Makes mc to start instantly.
