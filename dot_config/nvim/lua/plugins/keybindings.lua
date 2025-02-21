@@ -39,11 +39,12 @@ return {
       { "<leader>cm",       "<cmd>lua require('peek').open()<CR>",                           desc = "Markdown Preview" },
 
       -- Directory
-      { "<leader>d",        group = "Directories" },
-      { "<leader>dc",       "<cmd>Telescope file_browser<CR>",                               desc = "Current" },
-      { "<leader>db",       "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", desc = "Buffer" },
-      { "<leader>dh",       "<cmd>Telescope file_browser path=~<CR>",                        desc = "Home" },
-      { "<leader>dR",       "<cmd>Telescope file_browser path=~/Developer<CR>",              desc = "Repositories" },
+      { "<leader>f",        group = "Files" },
+      { "<leader>fw",       "<cmd>Telescope file_browser<CR>",                               desc = "Workdir" },
+      { "<leader>fb",       "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>", desc = "Buffer" },
+      { "<leader>fh",       "<cmd>Telescope file_browser path=~<CR>",                        desc = "Home" },
+      { "<leader>fR",       "<cmd>Telescope file_browser path=~/Developer<CR>",              desc = "Repositories" },
+      { "<leader>fe",       "<cmd>NvimTreeToggle<CR>",                                       desc = "Explorer" },
 
       -- Git
       { "<leader>g",        group = "Git" },
