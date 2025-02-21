@@ -15,6 +15,7 @@ if status is-interactive
     set -gx PATH $PATH /Users/aleksyrudy/.local/bin
     set -gx OLLAMA_HOST http://localhost:11434
     set -gx EDITOR nvim
+    set -gx GOPATH $HOME/.go
 
     set -U fish_greeting               # Disable the default greeting message.
     set fish_tmux_autostart true       # Automatically start tmux when opening a new terminal.
