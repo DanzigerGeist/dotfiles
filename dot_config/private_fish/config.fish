@@ -22,7 +22,7 @@ if status is-interactive
     # Global variables.
     set -gx ATAC_MAIN_DIR ~/.atac/
     set -gx GOPATH $HOME/.go
-    set -gx PATH $PATH $GOPATH /Users/aleksyrudy/.local/bin
+    set -gx PATH $PATH $GOPATH ~/.local/bin
     set -gx OLLAMA_HOST http://localhost:11434
     set -gx EDITOR nvim
 
