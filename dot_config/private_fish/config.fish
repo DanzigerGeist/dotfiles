@@ -23,7 +23,7 @@ if status is-interactive
     set -gx ATAC_MAIN_DIR ~/.atac/
     set -gx GOPATH $HOME/.go
     set -gx PATH $PATH $GOPATH ~/.local/bin ~/.cargo/bin
-    # set -gx OLLAMA_HOST http://100.103.53.191:11434
+    set -gx OLLAMA_HOST http://localhost:11434
     set -gx EDITOR nvim
 
     set -U fish_greeting                         # Disable the default greeting message.
