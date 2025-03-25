@@ -60,7 +60,8 @@ local mason = {
           on_attach = on_attach,
           capabilities = capabilities,
           settings = opts.servers[server_name] and opts.servers[server_name].settings or {},
-          root_dir = lspconfig.util.root_pattern("package.json")
+          root_dir = lspconfig.util.root_pattern("package.json"),
+          single_file_support = false
         })
       end,
       ["denols"] = function()
