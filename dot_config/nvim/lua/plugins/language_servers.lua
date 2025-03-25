@@ -104,16 +104,6 @@ local mason = {
           }
         },
       },
-      yamlls = {
-        settings = {
-          yaml = {
-            custom_tags = {
-              "{{ scalar }}", -- Ignore everything enclosed in {{ }}
-              "{{ sequence }}"
-            }
-          }
-        }
-      }
     }
   }
 }
