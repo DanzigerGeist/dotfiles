@@ -50,7 +50,7 @@ local catppuccin = {
     integrations = {
       notify = true
     },
-  }
+  },
   init = function()
     vim.cmd.colorscheme("catppuccin")
   end
