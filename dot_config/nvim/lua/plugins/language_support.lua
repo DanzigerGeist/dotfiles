@@ -51,4 +51,4 @@ local gitsigns = {
   end
 }
 
-return { markdown_preview, python_venv_selector, gitsigns }
+return { markdown_preview, python_venv_selector, lspsaga, gitsigns }
