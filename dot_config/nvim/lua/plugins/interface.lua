@@ -94,6 +94,15 @@ local noice = {
   end
 }
 
+local catppuccin = {
+  "catppuccin/nvim",
+  name = "catppuccin",
+  priority = 1000,
+  opts = {
+    flavour = 'mocha'
+  }
+}
+
 local kanagawa = {
   "rebelot/kanagawa.nvim",
   lazy = false,
@@ -139,4 +148,4 @@ local bufferline = {
   }
 }
 
-return { lualine, noice, bufferline, tokyonight, kanagawa }
+return { lualine, noice, bufferline, tokyonight, kanagawa, catppuccin }
