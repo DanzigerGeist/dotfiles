@@ -100,8 +100,12 @@ local catppuccin = {
   priority = 1000,
   opts = {
     flavour = 'mocha',
-    transparent_background = true
-  }
+    transparent_background = true,
+    term_colors = true
+  },
+  init = function()
+    vim.cmd.colorscheme("catppuccin")
+  end
 }
 
 local kanagawa = {
@@ -124,9 +128,6 @@ local tokyonight = {
       floats = "transparent",
     }
   },
-  init = function()
-    vim.cmd.colorscheme("tokyonight")
-  end
 }
 
 local bufferline = {
