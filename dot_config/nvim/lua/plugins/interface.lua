@@ -2,57 +2,57 @@ local lualine = {
   "nvim-lualine/lualine.nvim",
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
-    local theme = function()
-      local colors = {
-        darkgray = "#16161d",
-        gray = "#727169",
-        outerbg = "#16161D",
-        normal = "#7aa2f7",  -- Tokyonight blue
-        insert = "#9ece6a",  -- Tokyonight green
-        visual = "#bb9af7",  -- Tokyonight purple
-        replace = "#f7768e", -- Tokyonight red
-        command = "#e0af68", -- Tokyonight yellow
-      }
-      return {
-        inactive = {
-          a = { fg = colors.gray, bg = colors.outerbg, gui = "bold" },
-          b = { fg = colors.gray, bg = colors.outerbg },
-          c = { fg = colors.gray, bg = "none" },
-        },
-        visual = {
-          a = { fg = colors.darkgray, bg = colors.visual, gui = "bold" },
-          b = { fg = colors.gray, bg = colors.outerbg },
-          c = { fg = colors.gray, bg = "none" },
-        },
-        replace = {
-          a = { fg = colors.darkgray, bg = colors.replace, gui = "bold" },
-          b = { fg = colors.gray, bg = colors.outerbg },
-          c = { fg = colors.gray, bg = "none" },
-        },
-        normal = {
-          a = { fg = colors.darkgray, bg = colors.normal, gui = "bold" },
-          b = { fg = colors.gray, bg = colors.outerbg },
-          c = { fg = colors.gray, bg = "none" },
-        },
-        insert = {
-          a = { fg = colors.darkgray, bg = colors.insert, gui = "bold" },
-          b = { fg = colors.gray, bg = colors.outerbg },
-          c = { fg = colors.gray, bg = "none" },
-        },
-        command = {
-          a = { fg = colors.darkgray, bg = colors.command, gui = "bold" },
-          b = { fg = colors.gray, bg = colors.outerbg },
-          c = { fg = colors.gray, bg = "none" },
-        },
-      }
-    end
+    -- local theme = function()
+    --   local colors = {
+    --     darkgray = "#16161d",
+    --     gray = "#727169",
+    --     outerbg = "#16161D",
+    --     normal = "#7aa2f7",  -- Tokyonight blue
+    --     insert = "#9ece6a",  -- Tokyonight green
+    --     visual = "#bb9af7",  -- Tokyonight purple
+    --     replace = "#f7768e", -- Tokyonight red
+    --     command = "#e0af68", -- Tokyonight yellow
+    --   }
+    --   return {
+    --     inactive = {
+    --       a = { fg = colors.gray, bg = colors.outerbg, gui = "bold" },
+    --       b = { fg = colors.gray, bg = colors.outerbg },
+    --       c = { fg = colors.gray, bg = "none" },
+    --     },
+    --     visual = {
+    --       a = { fg = colors.darkgray, bg = colors.visual, gui = "bold" },
+    --       b = { fg = colors.gray, bg = colors.outerbg },
+    --       c = { fg = colors.gray, bg = "none" },
+    --     },
+    --     replace = {
+    --       a = { fg = colors.darkgray, bg = colors.replace, gui = "bold" },
+    --       b = { fg = colors.gray, bg = colors.outerbg },
+    --       c = { fg = colors.gray, bg = "none" },
+    --     },
+    --     normal = {
+    --       a = { fg = colors.darkgray, bg = colors.normal, gui = "bold" },
+    --       b = { fg = colors.gray, bg = colors.outerbg },
+    --       c = { fg = colors.gray, bg = "none" },
+    --     },
+    --     insert = {
+    --       a = { fg = colors.darkgray, bg = colors.insert, gui = "bold" },
+    --       b = { fg = colors.gray, bg = colors.outerbg },
+    --       c = { fg = colors.gray, bg = "none" },
+    --     },
+    --     command = {
+    --       a = { fg = colors.darkgray, bg = colors.command, gui = "bold" },
+    --       b = { fg = colors.gray, bg = colors.outerbg },
+    --       c = { fg = colors.gray, bg = "none" },
+    --     },
+    --   }
+    -- end
     require('lualine').setup({
       options = {
-        theme = theme(),
+        theme = 'tokyonight',
         icons_enabled = true,
         section_separators = { left = "", right = "" },
       },
-      extensions = { 'trouble', 'quickfix' },
+      -- extensions = { 'trouble', 'quickfix' },
     })
   end
 }
