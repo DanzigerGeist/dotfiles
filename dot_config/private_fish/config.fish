@@ -26,11 +26,11 @@ if status is-interactive
     set -gx OLLAMA_HOST http://localhost:11434
     set -gx EDITOR nvim
 
-    set -U fish_greeting                         # Disable the default greeting message.
+    set -U fish_greeting                          # Disable the default greeting message.
     set fish_tmux_autostart (true_if_exists tmux) # Automatically start tmux when opening a new terminal. True only if tmux is installed.
-    set fish_tmux_unicode true                   # Make tmux use Unicode characters.
-    set fish_tmux_no_alias true                  # Don't create aliases for tmux commands.
-    set sponge_purge_only_on_exit true           # Only purge failed commands on exit.
+    set fish_tmux_unicode true                    # Make tmux use Unicode characters.
+    set fish_tmux_no_alias true                   # Don't create aliases for tmux commands.
+    set sponge_purge_only_on_exit true            # Only purge failed commands on exit.
 
     # Initializing shell utils.
     thefuck --alias | source
