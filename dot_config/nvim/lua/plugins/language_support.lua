@@ -32,9 +32,7 @@ local lspsaga = {
   },
   opts = {
     lightbulb = {
-      enable = true,
       sign = false,
-      virtual_text = true
     }
   },
 }
