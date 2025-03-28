@@ -88,3 +88,18 @@ keymap.set("n", "x", '"_x')        -- delete single character without copying in
 -----------------------------------------------------------
 local load_settings = require('utils').glob_require
 load_settings("filetypes")
+
+-----------------------------------------------------------
+-- Diagnostics
+-----------------------------------------------------------
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = "●",
+    spacing = 2,
+  },
+  virtual_lines = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
