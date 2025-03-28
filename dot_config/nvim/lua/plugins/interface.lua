@@ -139,4 +139,4 @@ local bufferline = {
   }
 }
 
-return { lualine, noice, bufferline, tokyonight }
+return { lualine, noice, bufferline, tokyonight, kanagawa }
