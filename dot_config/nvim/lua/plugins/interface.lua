@@ -94,6 +94,15 @@ local noice = {
   end
 }
 
+local kanagawa = {
+  "rebelot/kanagawa.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {
+    transparent = true
+  },
+}
+
 local tokyonight = {
   "folke/tokyonight.nvim",
   lazy = false,
