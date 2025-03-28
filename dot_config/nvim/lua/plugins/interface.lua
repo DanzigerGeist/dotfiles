@@ -48,7 +48,7 @@ local lualine = {
     end
     require('lualine').setup({
       options = {
-        -- theme = theme(),
+        theme = theme(),
         icons_enabled = true,
         section_separators = { left = "", right = "" },
       },
