@@ -84,6 +84,7 @@ local bufferline = {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
     options = {
+      highlights = require("catppuccin.groups.integrations.bufferline").get(),
       diagnostics = 'nvim_lsp',
       diagnostics_indicator = function(_, _, diagnostics_dict, _)
         local s = " "
