@@ -99,7 +99,7 @@ local tokyonight = {
   },
   config = function(_, opts)
     require('tokyonight').setup(opts)
-    vim.cmd('colorscheme tokyonight')
+    -- vim.cmd('colorscheme tokyonight')
     -- vim.api.nvim_set_hl(0, "CursorLine", { underline = true, bg = "none" })
     -- vim.api.nvim_set_hl(0, "PmenuSel", { underline = true, bg = "none", fg = "none" })
   end
