@@ -3,7 +3,7 @@ local lualine = {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
     options = {
-      theme = 'tokyonight',
+      -- theme = 'tokyonight',
       icons_enabled = true,
       section_separators = { left = "", right = "" },
     },
