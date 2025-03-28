@@ -10,7 +10,15 @@ local snacks = {
     image = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+      sources = {
+        explorer = {
+          auto_close = true,
+          focus = "input"
+        }
+      }
+    },
     notifier = { enabled = true, style = 'fancy' },
     quickfile = { enabled = true },
     scope = { enabled = true },
