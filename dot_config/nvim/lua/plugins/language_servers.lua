@@ -60,7 +60,8 @@ local mason = {
           on_attach = on_attach,
           capabilities = capabilities,
           settings = opts.servers[server_name] and opts.servers[server_name].settings or {},
-          root_dir = lspconfig.util.root_pattern("package.json")
+          root_dir = lspconfig.util.root_pattern("package.json"),
+          single_file_support = false
         })
       end,
       ["denols"] = function()
@@ -69,9 +70,9 @@ local mason = {
           on_attach = function(client, bufnr)
             require("lsp-format").on_attach(client, bufnr)
             local active_clients = vim.lsp.get_active_clients()
-            for _, client in pairs(active_clients) do
-              if client.name == "ts_ls" then
-                client.stop()
+            for _, active_client in pairs(active_clients) do
+              if active_client.name == "ts_ls" then
+                active_client.stop()
               end
             end
           end,
@@ -104,16 +105,6 @@ local mason = {
           }
         },
       },
-      yamlls = {
-        settings = {
-          yaml = {
-            custom_tags = {
-              "{{ scalar }}", -- Ignore everything enclosed in {{ }}
-              "{{ sequence }}"
-            }
-          }
-        }
-      }
     }
   }
 }
