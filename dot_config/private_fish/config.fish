@@ -30,6 +30,7 @@ if status is-interactive
     set fish_tmux_autostart (true_if_exists tmux) # Automatically start tmux when opening a new terminal. True only if tmux is installed.
     set fish_tmux_unicode true                    # Make tmux use Unicode characters.
     set fish_tmux_no_alias true                   # Don't create aliases for tmux commands.
+    set fish_tmux_fixterm xterm-256color          # Set the xterm compatibility mode.
     set sponge_purge_only_on_exit true            # Only purge failed commands on exit.
 
     # Initializing shell utils.
