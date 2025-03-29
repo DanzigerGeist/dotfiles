@@ -14,8 +14,8 @@ local snacks = {
       enabled = true,
       sources = {
         explorer = {
-          auto_close = true,
-          focus = "input"
+          -- auto_close = true,
+          -- focus = "input"
         }
       }
     },
