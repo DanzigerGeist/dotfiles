@@ -2,29 +2,35 @@
 [[Snippets]]
   Description = "Update Installed Packages (All)"
   Output = ""
-  Tag = []
+  Tag = ["brew", "cargo", "pipx"]
   command = "brew update && brew upgrade && brew cleanup --prune=all && ls ~/.cargo/bin | awk '{print $NF}' | xargs -I{} cargo install {} --locked && pipx upgrade-all"
 
 [[Snippets]]
   Description = "Update Installed Packages (Brew)"
   Output = ""
-  Tag = []
+  Tag = ["brew"]
   command = "brew update && brew upgrade && brew cleanup --prune=all"
 
 [[Snippets]]
   Description = "Update Installed Packages (Cargo)"
   Output = ""
-  Tag = []
+  Tag = ["cargo"]
   command = "ls ~/.cargo/bin | awk '{print $NF}' | xargs -I{} cargo install {} --locked"
 
 [[Snippets]]
   Description = "Update Installed Packages (Python)"
   Output = ""
-  Tag = []
+  Tag = ["pipx"]
   command = "pipx upgrade-all"
 
 [[Snippets]]
   Description = "Re-Add All Chezmoi-managed Files"
   Output = ""
-  Tag = []
+  Tag = ["chezmoi"]
   command = "set original_pwd (pwd); cd ~ && chezmoi managed -i files | xargs -n1 chezmoi re-add; cd $original_pwd; set -e original_pwd"
+
+[[Snippets]]
+  Description = "Update Ollama models (Fish)"
+  Output = ""
+  Tag = ["ollama", "fish"]
+  command = "for model in (ollama list | tail -n +2 | awk '{print $1}'); ollama pull $model; end"
