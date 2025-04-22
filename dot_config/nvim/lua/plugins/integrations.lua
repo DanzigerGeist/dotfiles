@@ -33,7 +33,7 @@ local copilotChat = {
   build = "make tiktoken",
   opts = {
     window = {
-      width = 0.2,
+      width = 0.3,
     }
   }
 }
