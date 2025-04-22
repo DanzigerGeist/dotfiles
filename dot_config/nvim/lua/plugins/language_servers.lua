@@ -67,7 +67,7 @@ local mason = {
         lspconfig[server_name].setup({
           on_attach = function(client, bufnr)
             require("lsp-format").on_attach(client, bufnr)
-            local active_clients = vim.lsp.get_active_clients()
+            local active_clients = vim.lsp.get_clients()
             for _, active_client in pairs(active_clients) do
               if active_client.name == "ts_ls" then
                 active_client.stop()
