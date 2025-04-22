@@ -24,6 +24,12 @@
   command = "pipx upgrade-all"
 
 [[Snippets]]
+  Description = "Sync All Chezmoi-managed Files"
+  Output = ""
+  Tag = ["chezmoi"]
+  command = "chezmoi update --apply"
+
+[[Snippets]]
   Description = "Re-Add All Chezmoi-managed Files"
   Output = ""
   Tag = ["chezmoi"]
