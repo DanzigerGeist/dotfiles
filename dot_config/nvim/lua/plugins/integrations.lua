@@ -24,4 +24,14 @@ local toggleterm = {
 
 local wakatime = { 'wakatime/vim-wakatime', lazy = false }
 
-return { toggleterm, wakatime }
+local copilotChat = {
+  "CopilotC-Nvim/CopilotChat.nvim",
+  dependencies = {
+    { "zbirenbaum/copilot.lua" },
+    { "nvim-lua/plenary.nvim", branch = "master" }
+  },
+  build = "make tiktoken",
+  opts = {}
+}
+
+return { toggleterm, wakatime, copilotChat }
