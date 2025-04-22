@@ -9,10 +9,11 @@ local which_key = {
     preset = 'helix'
   },
   config = function(_, opts)
-    local function command(key, cmd, desc, icon)
+    local function command(key, cmd, desc, icon, mode)
       local prefix = '<cmd>'
       local suffix = '<CR>'
-      return { key, prefix .. cmd .. suffix, desc = desc, icon = icon }
+      mode = mode or 'n'
+      return { key, prefix .. cmd .. suffix, desc = desc, icon = icon, mode = mode }
     end
 
     local function command_group(group, name, icon, keys)
@@ -20,13 +21,30 @@ local which_key = {
       local prefix = '<leader>' .. group
       table.insert(keybindings, { prefix, group = name, icon = icon })
       for _, key in ipairs(keys) do
-        table.insert(keybindings, { prefix .. key[1], key[2], desc = key.desc, icon = key.icon })
+        table.insert(keybindings, { prefix .. key[1], key[2], desc = key.desc, icon = key.icon, mode = key.mode })
       end
       return keybindings
     end
 
     local wk = require('which-key')
     wk.setup(opts)
+    wk.add(command_group('a', 'AI (Copilot)', '', {
+      command('o', 'CopilotChatOpen', 'Open Chat', ''),
+      command('c', 'CopilotChatClose', 'Close Chat', ''),
+      command('C', 'CopilotChatToggle', 'Toggle Chat', ''),
+      command('s', 'CopilotChatStop', 'Stop Chat Output', ''),
+      command('r', 'CopilotChatReset', 'Reset Chat', ''),
+      command('p', 'CopilotChatPrompts', 'List Prompts', ''),
+      command('m', 'CopilotChatModels', 'List Models', ''),
+      command('a', 'CopilotChatAgents', 'List Agents', ''),
+      command('e', 'CopilotChatExplain', 'Explain', '', 'v'),
+      command('r', 'CopilotChatReview', 'Review', '', 'v'),
+      command('f', 'CopilotChatFix', 'Fix', '', 'v'),
+      command('o', 'CopilotChatOptimize', 'Optimize', '', 'v'),
+      command('d', 'CopilotChatDocs', 'Docs', '', 'v'),
+      command('t', 'CopilotChatTests', 'Tests', '', 'v'),
+      command('c', 'CopilotChatCommit', 'Commit', '', 'v')
+    }))
     wk.add(command_group('b', 'Buffers', '󰱾', {
       command('l', 'lua Snacks.picker.buffers()', 'List', '󰱾'),
       command('n', 'enew', 'New', '󰱾'),
