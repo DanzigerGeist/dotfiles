@@ -31,7 +31,11 @@ local copilotChat = {
     { "nvim-lua/plenary.nvim", branch = "master" }
   },
   build = "make tiktoken",
-  opts = {}
+  opts = {
+    window = {
+      width = 0.2,
+    }
+  }
 }
 
 return { toggleterm, wakatime, copilotChat }
