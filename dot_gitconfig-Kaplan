@@ -1,0 +1,4 @@
+[user]
+name  = Alexey Rudoy
+email = Alexey.Rudoy@kaplan.edu
+signingkey = ~/.ssh/id_ed25519_Kaplan.pub

@@ -1,0 +1,4 @@
+[user]
+name  = Alexey Rudoy
+email = Alexey.Rudoy@miratechgroup.com 
+signingkey = ~/.ssh/id_ed25519_Miratech.pub
