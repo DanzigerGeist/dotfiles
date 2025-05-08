@@ -26,6 +26,16 @@ local snacks = {
     statuscolumn = { enabled = true },
     words = { enabled = true },
   },
+  config = function(_, opts)
+    local snacks = require("snacks")
+    snacks.setup(opts)
+    snacks.rename.on_rename_file = function(from, to, _)
+      vim.lsp.util.rename(from, to, {
+        overwrite = false,
+        ignoreIfExists = false,
+      })
+    end
+  end,
 }
 
 local todo_comments = {
