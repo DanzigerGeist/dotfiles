@@ -1,5 +1,4 @@
 jorgebucaran/fisher
-ilancosman/tide@v6
 patrickf1/fzf.fish
 jorgebucaran/nvm.fish
 jorgebucaran/autopair.fish
@@ -17,3 +16,4 @@ kenji-miyake/reload.fish
 jorgebucaran/replay.fish
 jorgebucaran/humantime.fish
 meaningful-ooo/sponge
+plttn/tide@v6
