@@ -40,3 +40,11 @@
   Output = ""
   Tag = ["ollama", "fish"]
   command = "for model in (ollama list | tail -n +2 | awk '{print $1}'); ollama pull $model; end"
+
+[[Snippets]]
+  Description = "Remove all resources from a Tofu state"
+  Output = ""
+  Tag = ["terraform", "tofu"]
+  command = "tofu state list | xargs -n1 tofu state rm"
+
+  
