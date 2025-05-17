@@ -2,7 +2,7 @@ function true_if_exists
     if not functions -q $argv[1]
         echo false
     else
-        echo true
+        echo false
     end
 end
 
