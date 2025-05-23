@@ -47,5 +47,6 @@ if status is-interactive
     alias mc="mc --nosubshell"                                             # Makes mc to start instantly.
     alias telegram='TERM=xterm-256color nchat -d ~/.config/nchat/telegram' # Use Telegram config for nchat.
     alias whatsapp='TERM=xterm-256color nchat -d ~/.config/nchat/whatsapp' # Use WhatsApp config for nchat.
+    alias slack='~/.go/bin/slack-term -config ~/.config/slack-term/config' # Use Slack config for slack-term.
     alias ll='ls -lAh'
 end
