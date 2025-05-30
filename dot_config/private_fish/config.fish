@@ -1,11 +1,3 @@
-function true_if_exists
-    if not functions -q $argv[1]
-        echo false
-    else
-        echo false
-    end
-end
-
 if status is-interactive
     # Bootstrap Fisher (the plugin manager).
     if not functions -q fisher
@@ -32,7 +24,7 @@ if status is-interactive
     set fish_tmux_fixterm true                         # Set the xterm compatibility mode.
     set fish_tmux_fixterm_with_256color xterm-256color # Set the xterm compatibility mode.
     set fish_tmux_fixterm_without_256color xterm       # Set the xterm compatibility mode.
-    set fish_tmux_autostart (true_if_exists tmux)      # Automatically start tmux when opening a new terminal. True only if tmux is installed.
+    set fish_tmux_autostart false                      # Automatically start tmux when opening a new terminal. True only if tmux is installed.
     set sponge_purge_only_on_exit true                 # Only purge failed commands on exit.
 
     # Initializing shell utils.
