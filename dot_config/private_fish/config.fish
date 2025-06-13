@@ -30,6 +30,9 @@ if status is-interactive
     # Initializing shell utils.
     thefuck --alias | source
 
+    # Initialize direnv.
+    direnv hook fish | source
+
     # Create the Atac directory if it doesn't exist.
     if not test -d $ATAC_MAIN_DIR
         mkdir -p $ATAC_MAIN_DIR
