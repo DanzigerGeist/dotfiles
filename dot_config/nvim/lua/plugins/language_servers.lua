@@ -35,22 +35,33 @@ local mason = {
   },
   opts = {
     ensure_installed = {
-      "bashls",                -- Bash
-      "buf_ls",                -- Protobuf
-      "denols",                -- Deno
-      "fish_lsp",              -- Fish shell
-      "gh_actions_ls",         -- GitHub Actions
-      "gopls",                 -- Go
-      "helm_ls",               -- Helm
-      "jsonls",                -- JSON
-      "lua_ls",                -- Lua
-      "marksman",              -- Markdown
-      "nginx_language_server", -- Nginx
-      "sqls",                  -- SQL
-      "terraformls",           -- Terraform
-      "tflint",                -- Terraform (lint)
-      "vimls",                 -- Vimscript
-      "yamlls",                -- YAML
+      "bashls", "buf_ls", "denols", "fish_lsp", "gh_actions_ls", "gopls",
+      "helm_ls", "jsonls", "lua_ls", "marksman", "nginx_language_server",
+      "sqls", "terraformls", "tflint", "vimls", "yamlls"
+    },
+    setup_handlers = {
+      function(server_name)
+        require("lspconfig")[server_name].setup({})
+      end,
+      ["lua_ls"] = function()
+        require("lspconfig").lua_ls.setup({
+          settings = {
+            Lua = {
+              runtime = {
+                version = "LuaJIT",
+              },
+              diagnostics = {
+                globals = { "vim", "global" },
+              },
+              workspace = {
+                checkThirdParty = false,
+                library = vim.api.nvim_get_runtime_file("", true),
+              },
+              telemetry = { enable = false },
+            },
+          },
+        })
+      end
     }
   }
 }
