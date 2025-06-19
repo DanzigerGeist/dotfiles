@@ -37,60 +37,22 @@ local mason = {
   },
   opts = {
     ensure_installed = {
-      -- 🧠 LSP Servers
-      "bash-language-server",      -- bash, sh
-      "deno",                      -- denols (js/ts)
-      "gopls",                     -- Go LSP
-      "helm-ls",                   -- Helm
-      "json-lsp",                  -- JSON
-      "lua-language-server",       -- Lua
-      "marksman",                  -- Markdown
-      "nginx-language-server",     -- Nginx
-      "sonarlint-language-server", -- Multi-language (Java, JS, HTML, etc.)
-      "terraform-ls",              -- Terraform LSP
-      "vim-language-server",       -- Vimscript
-      "yaml-language-server",      -- YAML
-
-      -- ✏️ Formatters / Linters
-      "actionlint",             -- GitHub Actions
-      "checkmake",              -- Makefile linter
-      "cmakelang",              -- CMake formatter
-      "cmakelint",              -- CMake linter
-      "golangci-lint",          -- Go linter
-      "luacheck",               -- Lua linter
-      "luaformatter",           -- Lua formatter
-      "markdownlint",           -- Markdown linter
-      "nginx-config-formatter", -- Nginx config formatter
-      "sql-formatter",          -- SQL formatter
-      "sqlfmt",                 -- SQL formatter
-      "swiftlint",              -- Swift linter
-      "tflint",                 -- Terraform linter
-      "tfsec",                  -- Terraform security scanner
-      "xmlformatter",           -- XML formatter
-      "yamlfix",                -- YAML formatter/fixer
-      "yamlfmt",                -- YAML formatter
-      "yamllint",               -- YAML linter
-
-      -- 🧩 Tools / DAP / Extras
-      "fish-lsp",                   -- Fish shell language server
-      "buf",                        -- Protobuf tool
-      "gh",                         -- GitHub CLI integration
-      "gh-actions-language-server", -- YAML Actions
-      "go-debug-adapter",           -- Go debugger
-      "gofumpt",                    -- Go formatter
-      "goimports",                  -- Go imports formatter
-      "goimports-reviser",          -- Go import cleaner
-      "golines",                    -- Line-wrapping for Go
-      "gomodifytags",               -- Struct tag generator for Go
-      "gotests",                    -- Test generator for Go
-      "gotestsum",                  -- Better Go test runner
-      "jq",                         -- JSON CLI tool
-      "js-debug-adapter",           -- JS/TS debugger
-      "json-to-struct",             -- Go struct generator from JSON
-      "kube-linter",                -- Kubernetes linter (YAML/Helm)
-      "sqls",                       -- SQL Language Server
-      "sqlls",                      -- SQL Language Server (alt)
-      "yq",                         -- YAML CLI processor
+      "bashls",                -- Bash
+      "buf_ls",                -- Protobuf
+      "denols",                -- Deno
+      "fish_lsp",              -- Fish shell
+      "gh_actions_ls",         -- GitHub Actions
+      "gopls",                 -- Go
+      "helm_ls",               -- Helm
+      "jsonls",                -- JSON
+      "lua_ls",                -- Lua
+      "marksman",              -- Markdown
+      "nginx_language_server", -- Nginx
+      "sqls",                  -- SQL
+      "terraformls",           -- Terraform
+      "tflint",                -- Terraform (lint)
+      "vimls",                 -- Vimscript
+      "yamlls",                -- YAML
     }
   }
 }
