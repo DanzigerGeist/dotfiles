@@ -24,13 +24,13 @@
   command = "pipx upgrade-all"
 
 [[Snippets]]
-  Description = "Sync All Chezmoi-managed Files"
+  Description = "Sync All Chezmoi-managed Files (Pull)"
   Output = ""
   Tag = ["chezmoi"]
   command = "chezmoi update --apply"
 
 [[Snippets]]
-  Description = "Re-Add All Chezmoi-managed Files"
+  Description = "Sync All Chezmoi-managed Files (Push)"
   Output = ""
   Tag = ["chezmoi"]
   command = "set original_pwd (pwd); cd ~ && chezmoi managed -i files | xargs -n1 chezmoi re-add; cd $original_pwd; set -e original_pwd"
@@ -46,5 +46,3 @@
   Output = ""
   Tag = ["terraform", "tofu"]
   command = "tofu state list | xargs -n1 tofu state rm"
-
-  
