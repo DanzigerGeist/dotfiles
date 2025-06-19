@@ -5,6 +5,13 @@ if status is-interactive
         fisher update 
     end
 
+    if type -q brew
+        set HB_CNF_HANDLER (brew --prefix)"/Library/Taps/homebrew/homebrew-command-not-found/handler.fish"
+    if test -f $HB_CNF_HANDLER
+        source $HB_CNF_HANDLER
+    end
+    end
+
     # Homebrew's command-not-found handler.
     set HB_CNF_HANDLER (brew --prefix)"/Library/Taps/homebrew/homebrew-command-not-found/handler.fish"
     if test -f $HB_CNF_HANDLER
