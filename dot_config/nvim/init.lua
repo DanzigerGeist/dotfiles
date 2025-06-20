@@ -59,6 +59,7 @@ opt.updatetime = 250  -- ms to wait for trigger an event
 -- Install plugins
 -----------------------------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+---@diagnostic disable-next-line: undefined-field
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -79,9 +80,10 @@ require('lazy').setup('plugins', {
 -----------------------------------------------------------
 -- Keymappings
 -----------------------------------------------------------
-keymap.set("n", "<S-Up>", "10k")   -- Shift+Up jumps 10 lines up
-keymap.set("n", "<S-Down>", "10j") -- Shift+Down jumps 10 lines down
-keymap.set("n", "x", '"_x')        -- delete single character without copying into register
+keymap.set("n", "<S-Up>", "10k", { desc = "Jump 10 lines up" })
+keymap.set("n", "<S-Down>", "10j", { desc = "Jump 10 lines down" })
+keymap.set("n", "x", '"_x', { desc = "Delete character without yanking" })
+keymap.set("x", "p", [["_dP]], { desc = "Paste without overwriting clipboard" })
 
 -----------------------------------------------------------
 -- Language-specific settings (file types)
