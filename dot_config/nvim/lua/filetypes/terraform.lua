@@ -1,13 +1,11 @@
 local autocmd = vim.api.nvim_create_autocmd
 
--- Make sure that Terraform files are recognized as `terraform`.
 vim.filetype.add({
   extension = {
     tf = "terraform"
   }
 })
 
--- Make vim understand that Terraform files use `#` for comments.
 autocmd("FileType", {
   pattern = "terraform",
   callback = function()
