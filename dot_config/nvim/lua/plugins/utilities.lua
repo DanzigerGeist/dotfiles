@@ -75,4 +75,20 @@ local img_clip = {
   },
 }
 
-return { snacks, todo_comments, ts_comments, mini_diff, img_clip }
+local overseer = {
+  "stevearc/overseer.nvim",
+  opts = {
+    templates = { "builtin" },
+  },
+}
+
+local makefiles = {
+  "burgr033/mf-runner.nvim",
+  cmd = { "MFROpen", "MFRRun", "MFREdit" },
+  dependencies = {
+    "folke/snacks.nvim",
+  },
+  opts = {},
+}
+
+return { snacks, todo_comments, ts_comments, mini_diff, img_clip, overseer, makefiles }

@@ -98,4 +98,18 @@ local bufferline = {
   }
 }
 
-return { lualine, noice, bufferline, tokyonight, kanagawa, catppuccin }
+local better_diag = {
+  'sontungexpt/better-diagnostic-virtual-text',
+  event = "LspAttach",
+  config = function(_, opts)
+    vim.diagnostic.config({ virtual_text = false })
+    vim.api.nvim_create_autocmd("LspAttach", {
+      callback = function(args)
+        local bufnr = args.buf
+        require("better-diagnostic-virtual-text.api").setup_buf(bufnr, opts or {})
+      end,
+    })
+  end,
+}
+
+return { lualine, noice, bufferline, tokyonight, kanagawa, catppuccin, better_diag }

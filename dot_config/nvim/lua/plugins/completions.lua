@@ -22,6 +22,7 @@ local cmp_setup = function()
       { name = "copilot" },
       { name = 'nvim_lsp' },
       { name = 'nvim_lsp_signature_help' },
+      { name = "lazydev",                group_index = 0 },
       { name = 'vsnip' },
       { name = 'omni' },
       { name = "pypi" },
@@ -65,6 +66,7 @@ local cmp_setup = function()
       ['<C-e>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({ select = false }),
     }),
+    ---@diagnostic disable-next-line: missing-fields
     matching = { disallow_symbol_nonprefix_matching = false }
   })
 

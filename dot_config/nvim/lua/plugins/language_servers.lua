@@ -16,7 +16,7 @@ local treesitter = {
         "nginx", "nix", "perl", "pem", "php", "powershell", "proto", "properties",
         "python", "regex", "ruby", "rust", "scala", "sql", "ssh_config", "swift",
         "tcl", "terraform", "toml", "tmux", "typescript", "vim", "vimdoc", "vue",
-        "xml", "yaml"
+        "xml", "yaml", "jsdoc"
       },
       autotag = { enable = true },
       highlight = { enable = true },
@@ -39,31 +39,25 @@ local mason = {
       "helm_ls", "jsonls", "lua_ls", "marksman", "nginx_language_server",
       "sqls", "terraformls", "tflint", "vimls", "yamlls"
     },
-    setup_handlers = {
-      function(server_name)
-        require("lspconfig")[server_name].setup({})
-      end,
-      ["lua_ls"] = function()
-        require("lspconfig").lua_ls.setup({
-          settings = {
-            Lua = {
-              runtime = {
-                version = "LuaJIT",
-              },
-              diagnostics = {
-                globals = { "vim", "global" },
-              },
-              workspace = {
-                checkThirdParty = false,
-                library = vim.api.nvim_get_runtime_file("", true),
-              },
-              telemetry = { enable = false },
-            },
-          },
-        })
-      end
-    }
-  }
+  },
+  config = function(_, opts)
+    local mason_lspconfig = require("mason-lspconfig")
+    mason_lspconfig.setup(opts)
+
+    local util = require("lspconfig.util")
+
+    -- Deno should exit if it finds a tsconfig.json file
+    vim.lsp.config("denols", {
+      root_markers = { "deno.json" },
+      workspace_required = true,
+    })
+
+    -- TS LSP should exit if it finds a deno.json file
+    vim.lsp.config("ts_ls", {
+      root_markers = { "package.json" },
+      workspace_required = true,
+    })
+  end,
 }
 
 local lspsaga = {
@@ -80,4 +74,18 @@ local lspsaga = {
   },
 }
 
-return { treesitter, mason, lspsaga }
+local lazydev = {
+  "folke/lazydev.nvim",
+  ft = "lua",
+  opts = {
+    enabled = true,
+  }
+}
+
+local trouble = {
+  "folke/trouble.nvim",
+  cmd = "Trouble",
+  opts = {}
+}
+
+return { treesitter, mason, lspsaga, lazydev, trouble }
