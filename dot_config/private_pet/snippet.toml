@@ -1,26 +1,31 @@
-
 [[Snippets]]
   Description = "Update Installed Packages (All)"
   Output = ""
   Tag = ["brew", "cargo", "pipx"]
-  command = "brew update && brew upgrade && brew cleanup --prune=all && ls ~/.cargo/bin | awk '{print $NF}' | xargs -I{} cargo install {} --locked && pipx upgrade-all"
+  command = "brew update && brew upgrade && brew cleanup --prune=all && ls ~/.cargo/bin | awk '{print $NF}' | xargs -I{} cargo install {} --locked && gup update && pipx upgrade-all"
 
 [[Snippets]]
   Description = "Update Installed Packages (Brew)"
   Output = ""
-  Tag = ["brew"]
+  Tag = ["brew", "updates"]
   command = "brew update && brew upgrade && brew cleanup --prune=all"
 
 [[Snippets]]
   Description = "Update Installed Packages (Cargo)"
   Output = ""
-  Tag = ["cargo"]
+  Tag = ["cargo", "updates"]
   command = "ls ~/.cargo/bin | awk '{print $NF}' | xargs -I{} cargo install {} --locked"
+
+[[Snippets]]
+  Description = "Update Installed Packages (Golang)"
+  Output = ""
+  Tag = ["golang", "updates"]
+  command = "gup update"
 
 [[Snippets]]
   Description = "Update Installed Packages (Python)"
   Output = ""
-  Tag = ["pipx"]
+  Tag = ["pipx", "updates"]
   command = "pipx upgrade-all"
 
 [[Snippets]]
