@@ -1,55 +1,87 @@
 if status is-interactive
-    # Bootstrap Fisher (the plugin manager).
     if not functions -q fisher
         curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
-        fisher update 
+        fisher update
     end
 
-    if type -q brew
+    if command -sq atac
+        set -gx ATAC_MAIN_DIR $HOME/.atac
+        test -d $ATAC_MAIN_DIR; or mkdir -p $ATAC_MAIN_DIR
+    end
+
+    if command -sq brew
         set HB_CNF_HANDLER (brew --prefix)"/Library/Taps/homebrew/homebrew-command-not-found/handler.fish"
-    if test -f $HB_CNF_HANDLER
-        source $HB_CNF_HANDLER
-    end
+        test -f $HB_CNF_HANDLER; and source $HB_CNF_HANDLER
     end
 
-    # Homebrew's command-not-found handler.
-    set HB_CNF_HANDLER (brew --prefix)"/Library/Taps/homebrew/homebrew-command-not-found/handler.fish"
-    if test -f $HB_CNF_HANDLER
-        source $HB_CNF_HANDLER
+    if command -sq cargo
+        set -gx CARGO_HOME $HOME/.cargo
+        fish_add_path $CARGO_HOME/bin
     end
 
-    # Global variables.
-    set -gx ATAC_MAIN_DIR ~/.atac/
-    set -gx GOPATH $HOME/.go
-    set -gx PATH $PATH $GOPATH ~/.local/bin ~/.cargo/bin
-    set -gx OLLAMA_HOST http://localhost:11434
-    set -gx EDITOR nvim
-
-    set -U fish_greeting                               # Disable the default greeting message.
-    set fish_tmux_unicode true                         # Make tmux use Unicode characters.
-    set fish_tmux_no_alias true                        # Don't create aliases for tmux commands.
-    set fish_tmux_fixterm true                         # Set the xterm compatibility mode.
-    set fish_tmux_fixterm_with_256color xterm-256color # Set the xterm compatibility mode.
-    set fish_tmux_fixterm_without_256color xterm       # Set the xterm compatibility mode.
-    set fish_tmux_autostart false                      # Automatically start tmux when opening a new terminal. True only if tmux is installed.
-    set sponge_purge_only_on_exit true                 # Only purge failed commands on exit.
-
-    # Initializing shell utils.
-    thefuck --alias | source
-
-    # Initialize direnv.
-    direnv hook fish | source
-
-    # Create the Atac directory if it doesn't exist.
-    if not test -d $ATAC_MAIN_DIR
-        mkdir -p $ATAC_MAIN_DIR
+    if command -sq direnv
+        direnv hook fish | source
     end
 
-    # Aliases.
-    alias make="gmake"                                                     # Use homebrew's GNU Make.
-    alias mc="mc --nosubshell"                                             # Makes mc to start instantly.
-    alias telegram='TERM=xterm-256color nchat -d ~/.config/nchat/telegram' # Use Telegram config for nchat.
-    alias whatsapp='TERM=xterm-256color nchat -d ~/.config/nchat/whatsapp' # Use WhatsApp config for nchat.
-    alias slack='~/.go/bin/slack-term -config ~/.config/slack-term/config' # Use Slack config for slack-term.
-    alias ll='ls -lAh'
+    if command -sq fortune && command -sq cowsay && command -sq lolcat
+        function fish_greeting
+            fortune | cowsay | lolcat
+        end
+    else
+        set -g fish_greeting
+    end
+
+    if command -sq go
+        set -gx GOPATH $HOME/.go
+        set -gx GOBIN $GOPATH/bin
+        fish_add_path $GOBIN/
+    end
+
+    if command -sq nchat
+        function telegram
+            TERM=xterm-256color nchat -d ~/.config/nchat/telegram $argv
+        end
+        function whatsapp
+            TERM=xterm-256color nchat -d ~/.config/nchat/whatsapp $argv
+        end
+    end
+
+    if command -sq nvim
+        set -gx EDITOR nvim
+    end
+
+    if command -sq ollama
+        set -gx OLLAMA_HOST http://localhost:11434
+    end
+
+    if command -sq pipx
+        set -gx PIPX_BIN_DIR $HOME/.local/bin
+        fish_add_path $PIPX_BIN_DIR
+    end
+
+    if command -sq slack-term
+        function slack
+            ~/.go/bin/slack-term -config ~/.config/slack-term/config
+        end
+    end
+
+    if command -sq thefuck
+        thefuck --alias | source
+    end
+
+    if command -sq tmux
+        set fish_tmux_config $HOME/.config/tmux/tmux.conf
+        set fish_tmux_unicode true
+        set fish_tmux_no_alias true
+        set fish_tmux_fixterm true
+        set fish_tmux_fixterm_with_256color xterm-256color
+        set fish_tmux_fixterm_without_256color xterm
+        set fish_tmux_autostart true
+    end
+
+    set sponge_purge_only_on_exit true
+
+    function ll
+        ls -lAh --color=always $argv
+    end
 end
