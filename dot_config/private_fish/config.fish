@@ -25,7 +25,7 @@ if status is-interactive
 
     if command -sq fortune && command -sq cowsay && command -sq lolcat
         function fish_greeting
-            fortune | cowsay | lolcat
+            fortune -s | cowsay | lolcat
         end
     else
         set -g fish_greeting
