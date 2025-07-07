@@ -1,8 +1,8 @@
 [[Snippets]]
   Description = "Update Installed Packages (All)"
   Output = ""
-  Tag = ["brew", "cargo", "pipx"]
-  command = "brew update && brew upgrade && brew cleanup --prune=all && ls ~/.cargo/bin | awk '{print $NF}' | xargs -I{} cargo install {} --locked && gup update && pipx upgrade-all"
+  Tag = ["brew", "cargo", "golang", "pipx"]
+  command = "for cmd in (pet list --tags updates | grep '^ *Command:' | sed 's/^ *Command: //'); eval $cmd; end"
 
 [[Snippets]]
   Description = "Update Installed Packages (Brew)"
