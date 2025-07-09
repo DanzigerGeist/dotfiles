@@ -1,27 +1,24 @@
 [user]
-  name  = Aleksy Rudy
-  email = DanzigerGeist@icloud.com
-  signingkey = ~/.ssh/id_ed25519.pub
+    name  = Aleksy Rudy
+    email = DanzigerGeist@icloud.com
+    signingkey = ~/.ssh/id_ed25519.pub
 
 [includeIf "gitdir:~/projects/secondary-account/**"]
-  [user]
-    email = alexey.rudoy@kaplan.edu
-    signingkey =~/.ssh/id_ed25519_Kaplan.pub 
+    [user]
+        email = alexey.rudoy@kaplan.edu
+        signingkey =~/.ssh/id_ed25519_Kaplan.pub 
 
 [init]
-defaultBranch = master
+    defaultBranch = master
 
 [commit]
-gpgsign = true
+    gpgsign = true
 
 [gpg]
-format = ssh
-
-[gpg.ssh]
-allowedsignersfile=~/.ssh/allowed_signers
+    format = ssh
 
 [filter "lfs"]
-process = git-lfs filter-process
-required = true
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
