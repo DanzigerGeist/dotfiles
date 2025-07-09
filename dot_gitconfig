@@ -3,11 +3,6 @@
     email = DanzigerGeist@icloud.com
     signingkey = ~/.ssh/id_ed25519.pub
 
-[includeIf "gitdir:~/Developer/Kaplan/**"]
-    [user]
-        email = alexey.rudoy@kaplan.edu
-        signingkey =~/.ssh/id_ed25519_Kaplan.pub 
-
 [init]
     defaultBranch = master
 
@@ -22,3 +17,6 @@
     required = true
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
+
+[includeIf "gitdir:~/Developer/Kaplan/**"]
+    path = ~/.gitconfig-Kaplan
