@@ -3,7 +3,7 @@
     email = DanzigerGeist@icloud.com
     signingkey = ~/.ssh/id_ed25519.pub
 
-[includeIf "gitdir:~/projects/secondary-account/**"]
+[includeIf "gitdir:~/Developer/Kaplan/**"]
     [user]
         email = alexey.rudoy@kaplan.edu
         signingkey =~/.ssh/id_ed25519_Kaplan.pub 
