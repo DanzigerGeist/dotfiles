@@ -37,7 +37,7 @@ local mason = {
     ensure_installed = {
       "bashls", "buf_ls", "denols", "fish_lsp", "gh_actions_ls", "gopls",
       "helm_ls", "jsonls", "lua_ls", "marksman", "nginx_language_server",
-      "sqls", "terraformls", "tflint", "vimls", "yamlls"
+      "sqls", "terraformls", "tflint", "vimls", "yamlls", "ts_ls"
     },
   },
   config = function(_, opts)
@@ -46,13 +46,11 @@ local mason = {
 
     local util = require("lspconfig.util")
 
-    -- Deno should exit if it finds a tsconfig.json file
     vim.lsp.config("denols", {
       root_markers = { "deno.json" },
       workspace_required = true,
     })
 
-    -- TS LSP should exit if it finds a deno.json file
     vim.lsp.config("ts_ls", {
       root_markers = { "package.json" },
       workspace_required = true,
