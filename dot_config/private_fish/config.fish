@@ -12,6 +12,25 @@ if status is-interactive
     if command -sq brew
         set HB_CNF_HANDLER (brew --prefix)"/Library/Taps/homebrew/homebrew-command-not-found/handler.fish"
         test -f $HB_CNF_HANDLER; and source $HB_CNF_HANDLER
+
+        function autolink_homebrew_libs
+            set -l cppflags ""
+            set -l ldflags ""
+
+            for dir in /opt/homebrew/opt/*
+                if test -d "$dir/include"
+                    set cppflags "$cppflags -I$dir/include"
+                end
+                if test -d "$dir/lib"
+                    set ldflags "$ldflags -L$dir/lib"
+                end
+            end
+
+            set -gx CPPFLAGS "$CPPFLAGS$cppflags"
+            set -gx LDFLAGS "$LDFLAGS$ldflags"
+        end
+
+        autolink_homebrew_libs
     end
 
     if command -sq cargo
