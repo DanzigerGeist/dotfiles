@@ -16,18 +16,24 @@ if status is-interactive
         function autolink_homebrew_libs
             set -l cppflags ""
             set -l ldflags ""
+            set -l cgo_cflags ""
+            set -l cgo_ldflags ""
 
             for dir in /opt/homebrew/opt/*
                 if test -d "$dir/include"
                     set cppflags "$cppflags -I$dir/include"
+                    set cgo_cflags "$cgo_cflags -I$dir/include"
                 end
                 if test -d "$dir/lib"
                     set ldflags "$ldflags -L$dir/lib"
+                    set cgo_ldflags "$cgo_ldflags -L$dir/lib"
                 end
             end
 
             set -gx CPPFLAGS "$CPPFLAGS$cppflags"
             set -gx LDFLAGS "$LDFLAGS$ldflags"
+            set -gx CGO_CFLAGS "$CGO_CFLAGS$cgo_cflags"
+            set -gx CGO_LDFLAGS "$CGO_LDFLAGS$cgo_ldflags"
         end
 
         autolink_homebrew_libs
