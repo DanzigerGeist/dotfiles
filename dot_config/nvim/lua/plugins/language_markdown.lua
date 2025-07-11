@@ -20,10 +20,4 @@ local markview = {
   },
 }
 
--- NOTE: this guy causes some weird error on nvim startup
-local sc_im = {
-  "DAmesberger/sc-im.nvim",
-  opts = {},
-}
-
 return { markdown_preview, markview }
