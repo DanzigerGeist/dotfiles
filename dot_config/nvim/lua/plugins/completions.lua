@@ -112,15 +112,7 @@ local nvim_cmp = {
     { 'onsails/lspkind.nvim' },
     { 'L3MON4D3/LuaSnip' },
     { 'rafamadriz/friendly-snippets' },
-    {
-      "Snikimonkd/cmp-go-pkgs",
-      lazy = false,
-      dependencies = {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig"
-      }
-    },
+    { "Snikimonkd/cmp-go-pkgs" },
     { 'petertriho/cmp-git' },
     { 'olimorris/codecompanion.nvim' },
   },
