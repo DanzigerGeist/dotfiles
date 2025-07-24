@@ -11,6 +11,12 @@
   command = "brew update && brew upgrade && brew cleanup --prune=all"
 
 [[Snippets]]
+  Description = "Update Installed Packages (Mac App Store)"
+  Output = ""
+  Tag = ["mas", "updates"]
+  command = "mas upgrade"
+
+[[Snippets]]
   Description = "Update Installed Packages (Cargo)"
   Output = ""
   Tag = ["cargo", "updates"]
