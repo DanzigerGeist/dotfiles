@@ -3,6 +3,7 @@ local lualine = {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
     options = {
+      theme = 'tokyonight-moon',
       icons_enabled = true,
       section_separators = { left = "", right = "" },
     },
@@ -39,43 +40,54 @@ local noice = {
   end
 }
 
-local catppuccin = {
-  "catppuccin/nvim",
-  name = "catppuccin",
-  priority = 1000,
-  opts = {
-    flavour = 'mocha',
-    transparent_background = true,
-    term_colors = true,
-    integrations = {
-      notify = true
-    },
-  },
-  init = function()
-    vim.cmd.colorscheme("catppuccin")
-  end
-}
-
-local kanagawa = {
-  "rebelot/kanagawa.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {
-    transparent = true
-  },
-}
+-- local catppuccin = {
+--   "catppuccin/nvim",
+--   name = "catppuccin",
+--   priority = 1000,
+--   opts = {
+--     flavour = 'mocha',
+--     transparent_background = true,
+--     term_colors = true,
+--     integrations = {
+--       notify = true,
+--       snacks = {
+--         enabled = true
+--       }
+--     },
+--   }
+-- }
+--
+-- local kanagawa = {
+--   "rebelot/kanagawa.nvim",
+--   lazy = false,
+--   priority = 1000,
+--   opts = {
+--     transparent = true
+--   },
+-- }
 
 local tokyonight = {
   "folke/tokyonight.nvim",
   lazy = false,
-  priority = 1000,
+  priority = 10000,
   opts = {
     transparent = true,
     styles = {
       sidebars = "transparent",
       floats = "transparent",
-    }
+    },
+    on_colors = function(c)
+      c.bg_statusline = c.none
+    end,
+    on_highlights = function(hl, c)
+      hl.TabLineFill = {
+        bg = c.none,
+      }
+    end,
   },
+  init = function()
+    vim.cmd.colorscheme("tokyonight-moon")
+  end
 }
 
 local bufferline = {
@@ -112,4 +124,4 @@ local better_diag = {
   end,
 }
 
-return { lualine, noice, bufferline, tokyonight, kanagawa, catppuccin, better_diag }
+return { lualine, noice, bufferline, tokyonight, better_diag }
