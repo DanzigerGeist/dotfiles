@@ -40,32 +40,6 @@ local noice = {
   end
 }
 
--- local catppuccin = {
---   "catppuccin/nvim",
---   name = "catppuccin",
---   priority = 1000,
---   opts = {
---     flavour = 'mocha',
---     transparent_background = true,
---     term_colors = true,
---     integrations = {
---       notify = true,
---       snacks = {
---         enabled = true
---       }
---     },
---   }
--- }
---
--- local kanagawa = {
---   "rebelot/kanagawa.nvim",
---   lazy = false,
---   priority = 1000,
---   opts = {
---     transparent = true
---   },
--- }
-
 local tokyonight = {
   "folke/tokyonight.nvim",
   lazy = false,
