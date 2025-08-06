@@ -48,14 +48,6 @@ if status is-interactive
         direnv hook fish | source
     end
 
-    if command -sq fortune && command -sq cowsay && command -sq lolcat
-        function fish_greeting
-            fortune -s | cowsay | lolcat
-        end
-    else
-        set -g fish_greeting
-    end
-
     if command -sq go
         set -gx GOPATH $HOME/.go
         set -gx GOBIN $GOPATH/bin
@@ -84,12 +76,6 @@ if status is-interactive
         fish_add_path $PIPX_BIN_DIR
     end
 
-    if command -sq slack-term
-        function slack
-            ~/.go/bin/slack-term -config ~/.config/slack-term/config
-        end
-    end
-
     if command -sq thefuck
         thefuck --alias | source
     end
@@ -105,6 +91,7 @@ if status is-interactive
     end
 
     set sponge_purge_only_on_exit true
+    set -g fish_greeting
 
     function ll
         ls -lAh --color=always $argv
