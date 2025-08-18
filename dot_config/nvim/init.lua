@@ -105,3 +105,18 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
 })
+
+-----------------------------------------------------------
+-- Reload files changed outside of nvim
+-----------------------------------------------------------
+vim.o.autoread = true
+vim.o.updatetime = 1000
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+  pattern = "*",
+  command = "checktime",
+})
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+  callback = function(args)
+    vim.notify("File changed on disk. Reloaded: " .. args.file, vim.log.levels.INFO)
+  end,
+})
