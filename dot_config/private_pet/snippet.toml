@@ -1,59 +1,107 @@
 [[Snippets]]
-  Description = "Update Installed Packages (All)"
+  Description = "List Models (Ollama)"
   Output = ""
-  Tag = ["brew", "cargo", "golang", "pipx"]
-  command = "for cmd in (pet list --tags updates | grep '^ *Command:' | sed 's/^ *Command: //'); eval $cmd; end"
+  Tag = ["ollama", "models"]
+  command = "ollama list"
 
 [[Snippets]]
-  Description = "Update Installed Packages (Brew)"
+  Description = "List Packages (Brew)"
   Output = ""
-  Tag = ["brew", "updates"]
-  command = "brew update && brew upgrade && brew cleanup --prune=all"
+  Tag = ["brew", "packages"]
+  command = "brew list"
 
 [[Snippets]]
-  Description = "Update Installed Packages (Mac App Store)"
+  Description = "List Packages (Cargo)"
   Output = ""
-  Tag = ["mas", "updates"]
-  command = "mas upgrade"
+  Tag = ["cargo", "packages"]
+  command = "cargo install --list"
 
 [[Snippets]]
-  Description = "Update Installed Packages (Cargo)"
+  Description = "List Packages (Golang)"
   Output = ""
-  Tag = ["cargo", "updates"]
-  command = "ls ~/.cargo/bin | awk '{print $NF}' | xargs -I{} cargo install {} --locked"
+  Tag = ["golang", "packages"]
+  command = "gup list"
 
 [[Snippets]]
-  Description = "Update Installed Packages (Golang)"
+  Description = "List Packages (Mac App Store)"
   Output = ""
-  Tag = ["golang", "updates"]
-  command = "gup update"
+  Tag = ["mas", "packages"]
+  command = "mas list"
 
 [[Snippets]]
-  Description = "Update Installed Packages (Python)"
+  Description = "List Packages (NPM)"
   Output = ""
-  Tag = ["pipx", "updates"]
-  command = "pipx upgrade-all"
+  Tag = ["npm", "packages"]
+  command = "npm list -g --depth=0"
 
 [[Snippets]]
-  Description = "Sync All Chezmoi-managed Files (Pull)"
+  Description = "List Packages (Python)"
   Output = ""
-  Tag = ["chezmoi"]
-  command = "chezmoi update --apply"
-
-[[Snippets]]
-  Description = "Sync All Chezmoi-managed Files (Push)"
-  Output = ""
-  Tag = ["chezmoi"]
-  command = "set original_pwd (pwd); cd ~ && chezmoi managed -i files | xargs -n1 chezmoi re-add; cd $original_pwd; set -e original_pwd"
-
-[[Snippets]]
-  Description = "Update Ollama models (Fish)"
-  Output = ""
-  Tag = ["ollama", "fish"]
-  command = "for model in (ollama list | tail -n +2 | awk '{print $1}'); ollama pull $model; end"
+  Tag = ["pipx", "packages"]
+  command = "pipx list"
 
 [[Snippets]]
   Description = "Remove all resources from a Tofu state"
   Output = ""
   Tag = ["terraform", "tofu"]
   command = "tofu state list | xargs -n1 tofu state rm"
+
+[[Snippets]]
+  Description = "Sync Chezmoi-managed Files (Pull)"
+  Output = ""
+  Tag = ["chezmoi"]
+  command = "chezmoi update --apply"
+
+[[Snippets]]
+  Description = "Sync Chezmoi-managed Files (Push)"
+  Output = ""
+  Tag = ["chezmoi"]
+  command = "set original_pwd (pwd); cd ~ && chezmoi managed -i files | xargs -n1 chezmoi re-add; cd $original_pwd; set -e original_pwd"
+
+[[Snippets]]
+  Description = "Update Models (Ollama)"
+  Output = ""
+  Tag = ["ollama", "update"]
+  command = "for model in (ollama list | tail -n +2 | awk '{print $1}'); ollama pull $model; end"
+
+[[Snippets]]
+  Description = "Update Packages (All)"
+  Output = ""
+  Tag = ["brew", "cargo", "golang", "pipx", "mas", "npm", "update"]
+  command = "set -l names; set -l commands; for name in (pet list --tags update-all | grep '^ *Description:' | sed 's/^ *Description: //'); set -a names (string replace -a , ';' -- $name); end; for cmd in (pet list --tags update-all | grep '^ *Command:' | sed 's/^ *Command: //'); set -a commands \"$cmd\"; end; if test (count $commands) -eq 0; echo 'No update-all snippets found'; exit 1; end; mprocs $commands --names (string join , $names); set -e names; set -e commands; set -e name; set -e cmd"
+
+[[Snippets]]
+  Description = "Update Packages (Brew)"
+  Output = ""
+  Tag = ["brew", "packages", "update", "update-all"]
+  command = "brew update && brew upgrade && brew cleanup --prune=all"
+
+[[Snippets]]
+  Description = "Update Packages (Cargo)"
+  Output = ""
+  Tag = ["cargo", "update", "update-all"]
+  command = "ls ~/.cargo/bin | awk '{print $NF}' | xargs -I{} cargo install {} --locked"
+
+[[Snippets]]
+  Description = "Update Packages (Golang)"
+  Output = ""
+  Tag = ["golang", "update", "update-all"]
+  command = "gup update"
+
+[[Snippets]]
+  Description = "Update Packages (Mac App Store)"
+  Output = ""
+  Tag = ["mas", "update", "update-all"]
+  command = "mas upgrade"
+
+[[Snippets]]
+  Description = "Update Packages (NPM)"
+  Output = ""
+  Tag = ["npm", "update", "update-all"]
+  command = "npm update -g"
+
+[[Snippets]]
+  Description = "Update Packages (Python)"
+  Output = ""
+  Tag = ["pipx", "update", "update-all"]
+  command = "pipx upgrade-all"
