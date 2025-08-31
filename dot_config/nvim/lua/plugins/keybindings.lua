@@ -466,7 +466,7 @@ local which_key = {
   'folke/which-key.nvim',
   event = 'VeryLazy',
   dependencies = {
-    'echasnovski/mini.icons',
+    'nvim-mini/mini.icons',
     'nvim-tree/nvim-web-devicons'
   },
   opts = {
