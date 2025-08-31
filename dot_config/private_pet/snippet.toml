@@ -109,6 +109,5 @@
 [[Snippets]]
   Description = "Update Schemas (Archy)"
   Output = ""
-  Tag = ["chezmoi"]
-  command = "mprocs (gc profiles list | jq -r '.[] | "archy refresh --location \(.environment) --clientId \(.clientName) --clientSecret \(.clientSecret) --outputDir ~/.archy/\(.profileName)"') --names (gc profiles list | jq -r '.[].profileName' | string join ,)"
-
+  Tag = ["archy", "genesys",  "update"]
+  command = "mprocs (gc profiles list | jq -r '.[] | \"archy refresh --location \\(.environment) --clientId \\(.clientName) --clientSecret \\(.clientSecret) --outputDir ~/.archy/\\(.profileName)\"') --names (gc profiles list | jq -r '.[].profileName' | string join ,)"
