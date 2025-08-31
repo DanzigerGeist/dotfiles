@@ -52,7 +52,7 @@ local ts_comments = {
 }
 
 local mini_diff = {
-  "echasnovski/mini.diff",
+  "nvim-mini/mini.diff",
   version = false,
   config = function()
     local diff = require("mini.diff")
