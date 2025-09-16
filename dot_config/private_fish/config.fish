@@ -39,6 +39,10 @@ if status is-interactive
         autolink_homebrew_libs
     end
 
+    if command -sq bun
+        fish_add_path $HOME/.bun/bin
+    end
+
     if command -sq cargo
         set -gx CARGO_HOME $HOME/.cargo
         fish_add_path $CARGO_HOME/bin
@@ -52,6 +56,10 @@ if status is-interactive
         set -gx GOPATH $HOME/.go
         set -gx GOBIN $GOPATH/bin
         fish_add_path $GOBIN/
+    end
+
+    if command -sq kubectl
+        set -q KREW_ROOT; and set -gx PATH $PATH $KREW_ROOT/.krew/bin; or set -gx PATH $PATH $HOME/.krew/bin
     end
 
     if command -sq nchat
