@@ -17,3 +17,6 @@
     required = true
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
+
+[includeIf "hasconfig:remote.origin.url:git@github.Kaplan:"]
+    path = ~/.gitconfig-Kaplan
