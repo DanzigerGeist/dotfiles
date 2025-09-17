@@ -18,5 +18,5 @@
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
 
-[includeIf "hasconfig:remote.*.url:git@github.Kaplan:*"]
-    path = /Users/aleksy/.gitconfig-Kaplan
+[includeIf "hasconfig:remote.*.url:git@github.Kaplan:*/**"]
+    path = ~/.gitconfig-Kaplan
