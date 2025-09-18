@@ -102,6 +102,6 @@ if status is-interactive
     set -g fish_greeting
 
     function ll
-        ls -lAh --color=always $argv
+        eza -la --git --git-repos $argv
     end
 end
