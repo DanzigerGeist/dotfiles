@@ -13,30 +13,50 @@ if status is-interactive
         set HB_CNF_HANDLER (brew --prefix)"/Library/Taps/homebrew/homebrew-command-not-found/handler.fish"
         test -f $HB_CNF_HANDLER; and source $HB_CNF_HANDLER
 
-        function autolink_homebrew_libs
-            set -l cppflags ""
-            set -l ldflags ""
-            set -l cgo_cflags ""
-            set -l cgo_ldflags ""
+        set -l cppflags
+        set -l ldflags
+        set -l cgo_cflags
+        set -l cgo_ldflags
 
-            for dir in /opt/homebrew/opt/*
-                if test -d "$dir/include"
-                    set cppflags "$cppflags -I$dir/include"
-                    set cgo_cflags "$cgo_cflags -I$dir/include"
-                end
-                if test -d "$dir/lib"
-                    set ldflags "$ldflags -L$dir/lib"
-                    set cgo_ldflags "$cgo_ldflags -L$dir/lib"
-                end
+        for dir in /opt/homebrew/opt/*
+            if test -d "$dir/include"
+                set -a cppflags "-I$dir/include"
+                set -a cgo_cflags "-I$dir/include"
             end
 
-            set -gx CPPFLAGS "$CPPFLAGS$cppflags"
-            set -gx LDFLAGS "$LDFLAGS$ldflags"
-            set -gx CGO_CFLAGS "$CGO_CFLAGS$cgo_cflags"
-            set -gx CGO_LDFLAGS "$CGO_LDFLAGS$cgo_ldflags"
+            if test -d "$dir/lib"
+                set -a ldflags "-L$dir/lib"
+                set -a cgo_ldflags "-L$dir/lib"
+            end
         end
 
-        autolink_homebrew_libs
+        if set -q cppflags[1]
+            if set -q CPPFLAGS[1]
+                set -gx CPPFLAGS $CPPFLAGS $cppflags
+            else
+                set -gx CPPFLAGS $cppflags
+            end
+
+            if set -q CGO_CFLAGS[1]
+                set -gx CGO_CFLAGS $CGO_CFLAGS $cgo_cflags
+            else
+                set -gx CGO_CFLAGS $cgo_cflags
+            end
+        end
+
+        if set -q ldflags[1]
+            if set -q LDFLAGS[1]
+                set -gx LDFLAGS $LDFLAGS $ldflags
+            else
+                set -gx LDFLAGS $ldflags
+            end
+
+            if set -q CGO_LDFLAGS[1]
+                set -gx CGO_LDFLAGS $CGO_LDFLAGS $cgo_ldflags
+            else
+                set -gx CGO_LDFLAGS $cgo_ldflags
+            end
+        end
     end
 
     if command -sq bun
@@ -52,6 +72,36 @@ if status is-interactive
         direnv hook fish | source
     end
 
+    if command -sq eza
+        set fzf_preview_dir_cmd eza --all --color=always
+        function ll
+            eza -la --git --git-repos --icons=auto --color=auto $argv
+        end
+
+        function ls
+            eza -l --git --git-repos --icons=auto --color=auto $argv
+        end
+
+        function lt
+            eza -laT --git --git-repos --icons=auto --color=auto $argv
+        end
+    end
+
+    if functions -q fzf_configure_bindings
+        command stty -ixon >/dev/null 2>/dev/null
+
+        bind -e \cs; or true
+        bind -M insert -e \cs; or true
+
+        fzf_configure_bindings \
+            --directory=\csd \
+            --git_log=\csl \
+            --git_status=\css \
+            --history=\csh \
+            --processes=\csp \
+            --variables=\csv
+    end
+
     if command -sq go
         set -gx GOPATH $HOME/.go
         set -gx GOBIN $GOPATH/bin
@@ -59,7 +109,15 @@ if status is-interactive
     end
 
     if command -sq kubectl
-        set -q KREW_ROOT; and set -gx PATH $PATH $KREW_ROOT/.krew/bin; or set -gx PATH $PATH $HOME/.krew/bin
+        if set -q KREW_ROOT
+            set -l krew_bin $KREW_ROOT/.krew/bin
+        else
+            set -l krew_bin $HOME/.krew/bin
+        end
+
+        if test -d $krew_bin
+            fish_add_path $krew_bin
+        end
     end
 
     if command -sq nchat
@@ -77,6 +135,10 @@ if status is-interactive
 
     if command -sq ollama
         set -gx OLLAMA_HOST http://localhost:11434
+    end
+
+    if command -sq opam
+        test -r ~/.opam/opam-init/init.fish && source ~/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
     end
 
     if command -sq pipx
@@ -100,8 +162,4 @@ if status is-interactive
 
     set sponge_purge_only_on_exit true
     set -g fish_greeting
-
-    function ll
-        eza -la --git --git-repos $argv
-    end
 end
