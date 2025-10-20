@@ -1,0 +1,46 @@
+{{- $destPath := joinPath .chezmoi.homeDir ".gc/config.toml" -}}
+{{- $existing := dict -}}
+{{- if (stat $destPath) -}}
+  {{- $existing = fromToml (output "cat" $destPath) -}}
+{{- end -}}
+{{- $accounts := splitList "\n" (output "gopass" "ls" "--flat" "-d" "-l" "0" "genesys") -}}
+{{- range $entry := $accounts }}
+{{- if and $entry (contains "/" $entry) }}
+{{- $name := trimSuffix "/" (trimPrefix "genesys/" $entry) }}
+
+[{{ $name }}]
+access_token = ''
+auto_pagination_enabled = true
+client_credentials = '{{ trim (gopass (printf "genesys/%s/client/id" $name)) }}'
+client_secret = '{{ trim (gopass (printf "genesys/%s/client/secret" $name)) }}'
+environment = '{{ trim (gopass (printf "genesys/%s/environment" $name)) }}'
+gateway_host = ''
+gateway_password = ''
+gateway_pathparams = '{}'
+gateway_port = ''
+gateway_protocol = ''
+gateway_username = ''
+grant_type = '1'
+{{ $oauth := "" -}}
+{{- if (hasKey $existing $name) -}}
+  {{- $section := index $existing $name -}}
+  {{- if $section -}}
+    {{- $candidate := index $section "oauth_token_data" -}}
+    {{- if $candidate -}}
+      {{- $oauth = trim (printf "%v" $candidate) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+oauth_token_data = '{{ $oauth }}'
+proxy_host = ''
+proxy_password = ''
+proxy_pathparams = '{}'
+proxy_port = ''
+proxy_protocol = ''
+proxy_username = ''
+redirect_uri = ''
+secure_login_enabled = false
+
+{{- end }}
+{{- end }}
+
