@@ -5,9 +5,7 @@
 {{- $postmanKey := trim (gopass "postman/token") -}}
 model = "gpt-5-codex"
 model_provider = "openai"
-model_reasoning_effort = "high"
-model_reasoning_summary = "detailed"
-model_verbosity = "high"
+model_reasoning_effort = "medium"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 experimental_use_rmcp_client = true
