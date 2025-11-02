@@ -2,17 +2,16 @@
 {{- $jiraToken := trim (gopass "jira/yarrl/token") -}}
 {{- $jiraUrl := trim (gopass "jira/yarrl/url") -}}
 {{- $jiraUser := trim (gopass "jira/yarrl/user") -}}
-{{- $postmanKey := trim (gopass "postman/token") -}}
 model = "gpt-5-codex"
 model_provider = "openai"
 model_reasoning_effort = "medium"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
-experimental_use_rmcp_client = true
 
-[tools]
-web_search = true
-view_image = true
+[features]
+rmcp_client = true
+view_image_tool = true
+web_search_request = true
 
 [tui]
 notifications = true
@@ -20,6 +19,13 @@ notifications = true
 [model_providers.ollama]
 name = "Ollama"
 base_url = "http://localhost:11434/v1"
+
+[mcp_servers.apple]
+command = "/Applications/iMCP.app/Contents/MacOS/imcp-server"
+
+[mcp_servers.apple-mail]
+command = "bun"
+args = ["run", "/Users/aleksy/.mcp/apple-mcp/index.ts"]
 
 [mcp_servers.playwright]
 command = "mcp-server-playwright"
@@ -29,15 +35,12 @@ args = ["--browser=webkit", "--isolated"]
 command = "bun"
 args = ["run", "/Users/aleksy/.mcp/apple-mcp/index.ts"]
 
-[mcp_servers.github]
-command = "github-mcp-server"
-args = ["stdio", "--toolsets=all"]
+# [mcp_servers.github]
+# command = "github-mcp-server"
+# args = ["stdio", "--toolsets=all"]
 
-[mcp_servers.github.env]
-GITHUB_PERSONAL_ACCESS_TOKEN = "{{ $githubToken }}"
-
-[mcp_servers.imcp]
-command = "/Applications/iMCP.app/Contents/MacOS/imcp-server"
+# [mcp_servers.github.env]
+# GITHUB_PERSONAL_ACCESS_TOKEN = "{{ $githubToken }}"
 
 [mcp_servers.jira-yarrl]
 command = "mcp-atlassian"
@@ -51,11 +54,3 @@ args = [
 [mcp_servers.package-registry]
 command = "npx"
 args = ["-y", "package-registry-mcp"]
-
-[mcp_servers.postman]
-command = "npx"
-args = ["-y", "@postman/postman-mcp-server", "--region", "eu"]
-
-[mcp_servers.postman.env]
-POSTMAN_API_KEY = "{{ $postmanKey }}"
-
