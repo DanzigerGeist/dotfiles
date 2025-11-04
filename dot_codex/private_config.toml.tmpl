@@ -26,18 +26,18 @@ args = ["stdio", "--toolsets=all"]
 [mcp_servers.github.env]
 GITHUB_PERSONAL_ACCESS_TOKEN = "{{ trim (gopass "github/tokens/personal") }}"
 
-#[mcp_servers.jira-yarrl]
-#command = "mcp-atlassian"
-#args = [
-#  "--transport=stdio",
-#  "--jira-url={{ trim (gopass "jira/yarrl/url") }}",
-#  "--jira-username={{ trim (gopass "jira/yarrl/user") }}",
-#  "--jira-token={{ trim (gopass "jira/yarrl/token") }}",
-#]
+[mcp_servers.jira-yarrl]
+command = "mcp-atlassian"
+args = [
+  "--transport=stdio",
+  "--jira-url={{ trim (gopass "jira/yarrl/url") }}",
+  "--jira-username={{ trim (gopass "jira/yarrl/user") }}",
+  "--jira-token={{ trim (gopass "jira/yarrl/token") }}",
+]
 
-[mcp_servers.jira]
-url = "https://mcp.atlassian.com/v1/sse"
-enabled = true
+# [mcp_servers.jira]
+# url = "https://mcp.atlassian.com/v1/sse"
+# enabled = true
 
 [mcp_servers.package-registry]
 command = "npx"
