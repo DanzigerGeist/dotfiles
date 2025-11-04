@@ -35,9 +35,13 @@ args = [
   "--jira-token={{ trim (gopass "jira/yarrl/token") }}",
 ]
 
-# [mcp_servers.jira]
-# url = "https://mcp.atlassian.com/v1/sse"
-# enabled = true
+[mcp_servers.jira]
+url = "https://mcp.atlassian.com/v1/sse"
+enabled = true
+bearer_token_env_var = "JIRA_TOKEN"
+
+[mcp_servers.github.env]
+JIRA_TOKEN = "{{ trim (gopass "jira/yarrl/token") }}"
 
 [mcp_servers.package-registry]
 command = "npx"
