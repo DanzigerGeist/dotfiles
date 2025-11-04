@@ -37,8 +37,8 @@ GITHUB_PERSONAL_ACCESS_TOKEN = "{{ trim (gopass "github/tokens/personal") }}"
 
 [mcp_servers.jira]
 url = "https://mcp.atlassian.com/v1/sse"
-enabled = true
-bearer_token_env_var = "JIRA_API_TOKEN"
+command = "npx"
+args = ["-y", "mcp-remote", "https://mcp.atlassian.com/v1/sse". "--header", "Authorization: Bearer {{ trim (gopass "jira/yarrl/token") }}"]
 
 [mcp_servers.package-registry]
 command = "npx"
