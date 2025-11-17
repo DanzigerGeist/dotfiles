@@ -35,6 +35,10 @@ args = [
   "--jira-token={{ trim (gopass "jira/yarrl/token") }}",
 ]
 
+[mcp_servers.miratech-ms365]
+command = "npx"
+args = ["-y", "@softeria/ms-365-mcp-server", "--org-mode"]
+
 [mcp_servers.package-registry]
 command = "npx"
 args = ["-y", "package-registry-mcp"]
