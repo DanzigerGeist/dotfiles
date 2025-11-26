@@ -1,6 +1,6 @@
-model = "gpt-5-codex"
+model = "gpt-5.1-codex-max"
 model_provider = "openai"
-model_reasoning_effort = "medium"
+model_reasoning_effort = "high"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 
@@ -15,10 +15,6 @@ notifications = true
 [mcp_servers.apple]
 command = "/Applications/iMCP.app/Contents/MacOS/imcp-server"
 
-[mcp_servers.apple-mail]
-command = "bun"
-args = ["run", "/Users/aleksy/.mcp/apple-mcp/index.ts"]
-
 [mcp_servers.github]
 command = "github-mcp-server"
 args = ["stdio", "--toolsets=all"]
@@ -26,7 +22,16 @@ args = ["stdio", "--toolsets=all"]
 [mcp_servers.github.env]
 GITHUB_PERSONAL_ACCESS_TOKEN = "{{ trim (gopass "github/tokens/personal") }}"
 
-[mcp_servers.jira-yarrl]
+[mcp_servers.genesys]
+command = "npx"
+args = ["-y", "@makingchatbots/genesys-cloud-mcp-server"]
+
+[mcp_servers.genesys.env]
+GENESYSCLOUD_REGION = "{{ trim (gopass "genesys/bnp/region") }}"
+GENESYSCLOUD_OAUTHCLIENT_ID = "{{ trim (gopass "genesys/bnp/client/id") }}"
+GENESYSCLOUD_OAUTHCLIENT_SECRET = "{{ trim (gopass "genesys/bnp/client/secret") }}"
+
+[mcp_servers.jira]
 command = "mcp-atlassian"
 args = [
   "--transport=stdio",
@@ -35,10 +40,6 @@ args = [
   "--jira-token={{ trim (gopass "jira/yarrl/token") }}",
 ]
 
-[mcp_servers.miratech-ms365]
-command = "npx"
-args = ["-y", "@softeria/ms-365-mcp-server", "--org-mode"]
-
 [mcp_servers.package-registry]
 command = "npx"
 args = ["-y", "package-registry-mcp"]
@@ -46,3 +47,7 @@ args = ["-y", "package-registry-mcp"]
 [mcp_servers.playwright]
 command = "mcp-server-playwright"
 args = ["--browser=webkit", "--isolated"]
+
+[mcp_servers.terraform]
+command = "terraform-mcp-server"
+args = ["stdio"]

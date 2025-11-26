@@ -1,7 +1,7 @@
 [user]
     name  = Aleksy Rudy
     email = DanzigerGeist@icloud.com
-	signingkey = C106D2DF3D33ECE6
+	signingkey = 220D511CF2383D60 
      
 [init]
     defaultBranch = master
