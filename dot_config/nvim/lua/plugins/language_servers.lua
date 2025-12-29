@@ -1,28 +1,21 @@
 local treesitter = {
   "nvim-treesitter/nvim-treesitter",
   dependencies = { "windwp/nvim-ts-autotag" },
+  lazy = false,
+  event = "BufRead",
+  branch = "main",
   build = ":TSUpdate",
-  event = { "BufReadPre", "BufNewFile" },
-  config = function()
-    local configs = require("nvim-treesitter.configs")
-    configs.setup({
-      auto_install = true,
-      ensure_installed = {
-        "bash", "c", "comment", "cpp", "css", "csv", "diff", "dockerfile",
-        "dot", "fish", "git_config", "git_rebase", "gitattributes", "gitcommit",
-        "gitignore", "go", "gomod", "gosum", "gotmpl", "gowork", "html", "http",
-        "hcl", "helm", "java", "javascript", "jq", "json", "json5", "kotlin",
-        "lua", "luadoc", "make", "markdown", "markdown_inline", "mermaid", "muttrc",
-        "nginx", "nix", "perl", "pem", "php", "powershell", "proto", "properties",
-        "python", "regex", "ruby", "rust", "scala", "sql", "ssh_config", "swift",
-        "tcl", "terraform", "toml", "tmux", "typescript", "vim", "vimdoc", "vue",
-        "xml", "yaml", "jsdoc"
-      },
-      autotag = { enable = true },
-      highlight = { enable = true },
-      indent = { enable = true },
-    })
-  end,
+}
+
+local treesitter_query_loader = {
+  "Corn207/ts-query-loader.nvim",
+  version = "*",
+  dependencies = {
+    "nvim-treesitter/nvim-treesitter",
+  },
+  opts = {
+    ensure_installed = { "all" }
+  },
 }
 
 local mason = {
@@ -86,4 +79,4 @@ local trouble = {
   opts = {}
 }
 
-return { treesitter, mason, lspsaga, lazydev, trouble }
+return { treesitter, treesitter_query_loader, mason, lspsaga, lazydev, trouble }

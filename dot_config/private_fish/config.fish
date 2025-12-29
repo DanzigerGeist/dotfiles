@@ -162,6 +162,4 @@ if status is-interactive
 
     set sponge_purge_only_on_exit true
     set -g fish_greeting
-
-    alias terraform=tofu
 end
