@@ -18,11 +18,11 @@
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
 
-[includeIf "gitdir:~/Projects/Kaplan/"]
-    path = ~/.gitconfig-Kaplan
+[includeIf "gitdir:/Users/aleksy/Projects/Kaplan/"]
+    path = /Users/aleksy/.gitconfig-Kaplan
 
-[includeIf "gitdir:~/Projects/Miratech/"]
-    path = ~/.gitconfig-Miratech
+[includeIf "gitdir:/Users/aleksy/Projects/Miratech/"]
+    path = /Users/aleksy/.gitconfig-Miratech
 
-[includeIf "gitdir:~/Projects/Yarrl/"]
-    path = ~/.gitconfig-Yarrl
+[includeIf "gitdir:/Users/aleksy/Projects/Yarrl/"]
+    path = /Users/aleksy/.gitconfig-Yarrl
