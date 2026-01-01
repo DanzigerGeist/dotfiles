@@ -1,0 +1,33 @@
+Include /Users/aleksy/.colima/ssh_config
+
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_Personal
+  IdentitiesOnly yes
+  AddKeysToAgent yes
+  UseKeychain yes
+
+Host github.Kaplan
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_Kaplan
+  IdentitiesOnly yes
+  AddKeysToAgent yes
+  UseKeychain yes
+
+Host github.Miratech
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_Miratech
+  IdentitiesOnly yes
+  AddKeysToAgent yes
+  UseKeychain yes
+
+Host bitbucket.Yarrl
+  HostName bitbucket.org
+  User git
+  IdentityFile ~/.ssh/id_ed25519_Yarrl
+  IdentitiesOnly yes
+  AddKeysToAgent yes
+  UseKeychain yes
