@@ -1,17 +1,16 @@
 [user]
-    name  = Aleksy Rudy
+    name = Aleksy Rudy
     email = DanzigerGeist@icloud.com
-	signingkey = 220D511CF2383D60 
-     
+    signingkey = ~/.ssh/id_ed25519_Personal.pub
+
 [init]
     defaultBranch = master
 
 [commit]
-	gpgsign = true
+    gpgsign = true
 
 [gpg]
-	format = openpgp
-	program = gpg
+    format = ssh
 
 [filter "lfs"]
     process = git-lfs filter-process
@@ -19,5 +18,11 @@
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
 
-[includeIf "hasconfig:remote.*.url:git@github.Kaplan:*/**"]
+[includeIf "gitdir:~/Projects/Kaplan/"]
     path = ~/.gitconfig-Kaplan
+
+[includeIf "gitdir:~/Projects/Miratech/"]
+    path = ~/.gitconfig-Miratech
+
+[includeIf "gitdir:~/Projects/Yarrl/"]
+    path = ~/.gitconfig-Yarrl
