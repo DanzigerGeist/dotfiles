@@ -1,0 +1,3 @@
+[user]
+  email = aleksy.rudy@yarrl.pl
+  signingkey = ~/.ssh/id_ed25519_Yarrl.pub
