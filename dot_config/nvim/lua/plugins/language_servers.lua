@@ -30,7 +30,7 @@ local mason = {
     ensure_installed = {
       "bashls", "buf_ls", "denols", "fish_lsp", "gh_actions_ls", "gopls",
       "helm_ls", "jsonls", "lua_ls", "marksman", "nginx_language_server",
-      "sqls", "terraformls", "tflint", "vimls", "yamlls", "ts_ls"
+      "sqls", "tofu_ls", "tflint", "vimls", "yamlls", "ts_ls"
     },
   },
   config = function(_, opts)
