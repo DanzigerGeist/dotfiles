@@ -160,6 +160,10 @@ if status is-interactive
         set fish_tmux_autostart true
     end
 
+    if command -sq zoxide
+        zoxide init fish | source
+    end
+
     set sponge_purge_only_on_exit true
     set -g fish_greeting
     set -gx JIRA_API_TOKEN (gopass show -o jira/yarrl/token)
