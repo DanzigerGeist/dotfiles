@@ -28,7 +28,7 @@ local mason = {
   },
   opts = {
     ensure_installed = {
-      "angularls", "ansiblels", "apex-language-server", "asm_lsp", "awk_ls", "bashls",
+      "angularls", "ansiblels", "asm_lsp", "awk_ls", "bashls",
       "bqls", "buf_ls", "cobol_ls", "csharp_ls", "cssls", "css_variables",
       "cssmodules_ls", "cucumber_language_server", "denols",
       "docker_compose_language_service", "docker_language_server", "fish_lsp",
