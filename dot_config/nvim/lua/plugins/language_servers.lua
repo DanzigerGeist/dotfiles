@@ -28,9 +28,25 @@ local mason = {
   },
   opts = {
     ensure_installed = {
-      "bashls", "buf_ls", "denols", "fish_lsp", "gh_actions_ls", "gopls",
-      "helm_ls", "jsonls", "lua_ls", "marksman", "nginx_language_server",
-      "sqls", "tofu_ls", "tflint", "vimls", "yamlls", "ts_ls"
+      "actionlint", "angularls", "ansiblels", "ansible-lint", "apex-language-server",
+      "asm_lsp", "asmfmt", "awk_ls", "bashls", "bqls", "buf_ls", "checkmake",
+      "cmakelang", "cmakelint", "cobol_ls", "cpptools", "csharp_ls", "csharpier",
+      "cssls", "css_variables", "cssmodules_ls", "cucumber_language_server",
+      "delve", "denols", "docker_compose_language_service", "docker_language_server",
+      "fish_lsp", "gci", "gh", "gh_actions_ls", "gitleaks", "gitlint",
+      "go-debug-adapter", "gofumpt", "goimports", "goimports-reviser",
+      "golangci-lint", "golangci_lint_ls", "golines", "gomodifytags", "gopls",
+      "gospel", "gotests", "gotestsum", "gradle_ls", "groovyls", "helm_ls", "html",
+      "htmlbeautifier", "htmlhint", "iferr", "impl", "jq", "jqls", "jsonls",
+      "kube-linter", "kubescape", "lua_ls", "luacheck", "luaformatter", "lwc_ls",
+      "markdown_oxide", "markdown-toc", "markdownlint", "marksman", "mutt_ls", "mypy",
+      "ocamllsp", "ocamlformat", "postgres_lsp", "powershell_es", "prettier",
+      "prettierd", "pylsp", "reason_ls", "rstcheck", "rubocop", "ruby_lsp", "rubyfmt",
+      "ruff", "rust_analyzer", "shfmt", "sonarlint-language-server", "sql-formatter",
+      "sqlfluff", "sqlfmt", "sqlls", "sqls", "svelte", "swiftformat", "swiftlint",
+      "tailwindcss", "tflint", "tfsec", "tofu_ls", "tree-sitter-cli", "ts_ls",
+      "usort", "uv", "vimls", "vue_ls", "yamlls", "yamlfix", "yamlfmt", "yamllint",
+      "yq", "zls"
     },
   },
   config = function(_, opts)
