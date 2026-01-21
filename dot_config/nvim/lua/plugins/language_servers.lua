@@ -29,10 +29,10 @@ local mason = {
   opts = {
     ensure_installed = {
       "angularls", "ansiblels", "asm_lsp", "awk_ls", "bashls",
-      "bqls", "buf_ls", "cobol_ls", "csharp_ls", "cssls", "css_variables",
+      "bqls", "buf_ls", "cobol_ls", "cssls", "css_variables",
       "cssmodules_ls", "cucumber_language_server", "denols",
       "docker_compose_language_service", "docker_language_server", "fish_lsp",
-      "gh_actions_ls", "golangci_lint_ls", "gopls", "gradle_ls", "groovyls", "helm_ls",
+      "gh_actions_ls", "golangci_lint_ls", "gopls", "gradle_ls", "helm_ls",
       "html", "jqls", "jsonls", "lua_ls", "lwc_ls", "markdown_oxide", "marksman",
       "mutt_ls", "ocamllsp", "postgres_lsp", "powershell_es", "pylsp", "reason_ls",
       "rubocop", "ruby_lsp", "ruff", "rust_analyzer", "sqlls", "sqls", "svelte",
