@@ -56,7 +56,6 @@ local mason = {
       "tflint",
       "tofu_ls",
       "ts_ls",
-      "uv",
       "vimls",
       "yamlls",
     },
