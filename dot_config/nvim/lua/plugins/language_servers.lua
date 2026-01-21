@@ -43,8 +43,6 @@ local mason = {
       "jqls",
       "jsonls",
       "lua_ls",
-      "markdown_oxide",
-      "marksman",
       "ocamllsp",
       "postgres_lsp",
       "pylsp",
