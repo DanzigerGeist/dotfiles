@@ -22,24 +22,6 @@ args = ["stdio", "--toolsets=all"]
 [mcp_servers.github.env]
 GITHUB_PERSONAL_ACCESS_TOKEN = "{{ trim (gopass "github/tokens/personal") }}"
 
-[mcp_servers.genesys]
-command = "npx"
-args = ["-y", "@makingchatbots/genesys-cloud-mcp-server"]
-
-[mcp_servers.genesys.env]
-GENESYSCLOUD_REGION = "{{ trim (gopass "genesys/bnp/region") }}"
-GENESYSCLOUD_OAUTHCLIENT_ID = "{{ trim (gopass "genesys/bnp/client/id") }}"
-GENESYSCLOUD_OAUTHCLIENT_SECRET = "{{ trim (gopass "genesys/bnp/client/secret") }}"
-
-[mcp_servers.jira]
-command = "mcp-atlassian"
-args = [
-  "--transport=stdio",
-  "--jira-url={{ trim (gopass "jira/yarrl/url") }}",
-  "--jira-username={{ trim (gopass "jira/yarrl/user") }}",
-  "--jira-token={{ trim (gopass "jira/yarrl/token") }}",
-]
-
 [mcp_servers.package-registry]
 command = "npx"
 args = ["-y", "package-registry-mcp"]
@@ -51,3 +33,21 @@ args = ["--browser=webkit", "--isolated"]
 [mcp_servers.terraform]
 command = "terraform-mcp-server"
 args = ["stdio"]
+
+[mcp_servers.genesys_bnp]
+command = "npx"
+args = ["-y", "@makingchatbots/genesys-cloud-mcp-server"]
+
+[mcp_servers.genesys_bnp.env]
+GENESYSCLOUD_REGION = "{{ trim (gopass "genesys/bnp/region") }}"
+GENESYSCLOUD_OAUTHCLIENT_ID = "{{ trim (gopass "genesys/bnp/client/id") }}"
+GENESYSCLOUD_OAUTHCLIENT_SECRET = "{{ trim (gopass "genesys/bnp/client/secret") }}"
+
+[mcp_servers.jira_yarrl]
+command = "mcp-atlassian"
+args = [
+  "--transport=stdio",
+  "--jira-url={{ trim (gopass "jira/yarrl/url") }}",
+  "--jira-username={{ trim (gopass "jira/yarrl/user") }}",
+  "--jira-token={{ trim (gopass "jira/yarrl/token") }}",
+]
