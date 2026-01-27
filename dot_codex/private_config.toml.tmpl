@@ -47,7 +47,7 @@ GENESYSCLOUD_OAUTHCLIENT_SECRET = "{{ trim (gopass "genesys/bnp/client/secret") 
 command = "mcp-atlassian"
 args = [
   "--transport=stdio",
-  "--jira-url={{ trim (gopass "jira/yarrl/url") }}",
-  "--jira-username={{ trim (gopass "jira/yarrl/user") }}",
-  "--jira-token={{ trim (gopass "jira/yarrl/token") }}",
+  "--jira-url={{ trim (gopass "yarrl/atlassian/url") }}",
+  "--jira-username={{ trim (gopass "yarrl/atlassian/user") }}",
+  "--jira-token={{ trim (gopass "yarrl/atlassian/token") }}",
 ]
