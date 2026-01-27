@@ -27,7 +27,7 @@ command = "npx"
 args = ["-y", "package-registry-mcp"]
 
 [mcp_servers.playwright]
-command = "mcp-server-playwright"
+command = "playwright-mcp"
 args = ["--browser=webkit", "--isolated"]
 
 [mcp_servers.terraform]
@@ -51,3 +51,11 @@ args = [
   "--jira-username={{ trim (gopass "yarrl/atlassian/user") }}",
   "--jira-token={{ trim (gopass "yarrl/atlassian/token") }}",
 ]
+
+[mcp_servers.slack]
+command = "npx"
+args = ["-y", "slack-mcp-server@latest", --transport", "stdio"]
+
+[mcp_servers.slack.env]
+SLACK_MCP_XOXC_TOKEN = "{{ trim (gopass "mirabridge/slack/xoxc") }}"
+SLACK_MCP_XOXD_TOKEN = "{{ trim (gopass "mirabridge/slack/xoxd") }}"
