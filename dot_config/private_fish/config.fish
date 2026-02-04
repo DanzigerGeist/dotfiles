@@ -1,4 +1,8 @@
 if status is-interactive
+
+    # Disable the default greeting message
+    set -g fish_greeting
+
     if not functions -q fisher
         curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
         fisher update
@@ -133,14 +137,6 @@ if status is-interactive
         set -gx EDITOR nvim
     end
 
-    if command -sq ollama
-        set -gx OLLAMA_HOST http://localhost:11434
-    end
-
-    if command -sq opam
-        test -r ~/.opam/opam-init/init.fish && source ~/.opam/opam-init/init.fish >/dev/null 2>/dev/null; or true
-    end
-
     if command -sq pipx
         set -gx PIPX_BIN_DIR $HOME/.local/bin
         fish_add_path $PIPX_BIN_DIR
@@ -157,14 +153,8 @@ if status is-interactive
         set fish_tmux_fixterm true
         set fish_tmux_fixterm_with_256color xterm-256color
         set fish_tmux_fixterm_without_256color xterm
-        set fish_tmux_autostart true
-    end
-
-    if command -sq zoxide
-        zoxide init fish | source
+        set fish_tmux_autostart false
     end
 
     set sponge_purge_only_on_exit true
-    set -g fish_greeting
-    set -gx JIRA_API_TOKEN (gopass show -o jira/yarrl/token)
 end
