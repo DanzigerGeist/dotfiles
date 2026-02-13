@@ -3,9 +3,20 @@ model_provider = "openai"
 model_reasoning_effort = "xhigh"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
+web_search = "live"
 
 [tui]
+alternate_screen = "auto"
+animations = true
+notification_method = "auto"
 notifications = true
+show_tooltips = true
+status_line = [
+  "model-with-reasoning",
+  "project-root",
+  "git-branch",
+  "context-remaining",
+]
 
 [mcp_servers.apple]
 command = "/Applications/iMCP.app/Contents/MacOS/imcp-server"
