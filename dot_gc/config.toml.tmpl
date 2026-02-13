@@ -2,48 +2,36 @@
 {{- $existing := dict -}}
 {{- if (stat $destPath) -}}
   {{- $raw := output "cat" $destPath -}}
-  {{- $trimmed := trim $raw -}}
-  {{- if (hasPrefix "[" $trimmed) -}}
+  {{- if ne (trim $raw) "" -}}
     {{- $existing = fromToml $raw -}}
   {{- end -}}
 {{- end -}}
-{{- $accounts := splitList "\n" (output "gopass" "ls" "--flat" "-d" "-l" "0" "genesys") -}}
-{{- range $entry := $accounts }}
-{{- if and $entry (contains "/" $entry) }}
-{{- $name := trimSuffix "/" (trimPrefix "genesys/" $entry) }}
-
-[{{ $name }}]
-access_token = ''
-auto_pagination_enabled = true
-client_credentials = '{{ trim (gopass (printf "genesys/%s/client/id" $name)) }}'
-client_secret = '{{ trim (gopass (printf "genesys/%s/client/secret" $name)) }}'
-environment = '{{ trim (gopass (printf "genesys/%s/environment" $name)) }}'
-gateway_host = ''
-gateway_password = ''
-gateway_pathparams = '{}'
-gateway_port = ''
-gateway_protocol = ''
-gateway_username = ''
-grant_type = '1'
-{{ $oauth := "" -}}
-{{- if (hasKey $existing $name) -}}
-  {{- $section := index $existing $name -}}
-  {{- if $section -}}
-    {{- $candidate := index $section "oauth_token_data" -}}
-    {{- if $candidate -}}
-      {{- $oauth = trim (printf "%v" $candidate) -}}
+{{- $accountBases := dict -}}
+{{- $entries := splitList "\n" (output "gopass" "ls" "--flat" "-d") -}}
+{{- range $entry := $entries -}}
+  {{- $entry = trimSuffix "/" $entry -}}
+  {{- if and $entry (contains "/genesys/" $entry) -}}
+    {{- $parts := splitList "/" $entry -}}
+    {{- if and (eq (len $parts) 3) (eq (index $parts 1) "genesys") -}}
+      {{- $prefix := index $parts 0 -}}
+      {{- $name := index $parts 2 -}}
+      {{- $_ := set $accountBases $name (printf "%s/genesys/%s" $prefix $name) -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
-oauth_token_data = '{{ $oauth }}'
-proxy_host = ''
-proxy_password = ''
-proxy_pathparams = '{}'
-proxy_port = ''
-proxy_protocol = ''
-proxy_username = ''
-redirect_uri = ''
-secure_login_enabled = false
 
-{{- end }}
-{{- end }}
+{{- range $name := sortAlpha (keys $accountBases) -}}
+{{- $base := index $accountBases $name -}}
+{{- $section := dict -}}
+{{- if hasKey $existing $name -}}
+  {{- $existingSection := index $existing $name -}}
+  {{- range $k, $v := $existingSection -}}
+    {{- $_ := set $section $k $v -}}
+  {{- end -}}
+{{- end -}}
+{{- $_ := set $section "client_credentials" (trim (gopass (printf "%s/client/id" $base))) -}}
+{{- $_ := set $section "client_secret" (trim (gopass (printf "%s/client/secret" $base))) -}}
+{{- $_ := set $section "environment" (trim (gopass (printf "%s/environment" $base))) -}}
+[{{ $name }}]
+{{ toToml $section }}
+{{- end -}}

@@ -156,5 +156,9 @@ if status is-interactive
         set fish_tmux_autostart false
     end
 
+    if command -sq opam
+        test -r '/Users/aleksy/.opam/opam-init/init.fish' && source '/Users/aleksy/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+    end
+
     set sponge_purge_only_on_exit true
 end
