@@ -1,4 +1,4 @@
-model = "gpt-5.2-codex"
+model = "gpt-5.3-codex"
 model_provider = "openai"
 model_reasoning_effort = "xhigh"
 approval_policy = "on-request"
@@ -10,14 +10,33 @@ notifications = true
 [mcp_servers.apple]
 command = "/Applications/iMCP.app/Contents/MacOS/imcp-server"
 
-[mcp_servers.github]
+[mcp_servers.genesys_bnp]
+command = "npx"
+args = ["-y", "@makingchatbots/genesys-cloud-mcp-server"]
+env.GENESYSCLOUD_REGION = "{{ trim (gopass "yarrl/genesys/bnp/region") }}"
+env.GENESYSCLOUD_OAUTHCLIENT_ID = "{{ trim (gopass "yarrl/genesys/bnp/client/id") }}"
+env.GENESYSCLOUD_OAUTHCLIENT_SECRET = "{{ trim (gopass "yarrl/genesys/bnp/client/secret") }}"
+
+[mcp_servers.genesys_inpost]
+command = "npx"
+args = ["-y", "@makingchatbots/genesys-cloud-mcp-server"]
+env.GENESYSCLOUD_REGION = "{{ trim (gopass "yarrl/genesys/inpost/region") }}"
+env.GENESYSCLOUD_OAUTHCLIENT_ID = "{{ trim (gopass "yarrl/genesys/inpost/client/id") }}"
+env.GENESYSCLOUD_OAUTHCLIENT_SECRET = "{{ trim (gopass "yarrl/genesys/inpost/client/secret") }}"
+
+[mcp_servers.github_personal]
 command = "github-mcp-server"
 args = ["stdio", "--toolsets=all"]
+env.GITHUB_PERSONAL_ACCESS_TOKEN = "{{ trim (gopass "personal/github/tokens/personal") }}"
 
-[mcp_servers.github.env]
-GITHUB_PERSONAL_ACCESS_TOKEN = "{{ trim (gopass "github/tokens/personal") }}"
+[mcp_servers.atlassian_yarrl]
+command = "mcp-atlassian"
+args = ["--transport=stdio"]
+env.JIRA_URL = "{{ trim (gopass "yarrl/atlassian/url") }}"
+env.JIRA_USERNAME = "{{ trim (gopass "yarrl/atlassian/user") }}"
+env.JIRA_API_TOKEN = "{{ trim (gopass "yarrl/atlassian/token") }}"
 
-[mcp_servers.package-registry]
+[mcp_servers.package_registry]
 command = "npx"
 args = ["-y", "package-registry-mcp"]
 
@@ -25,32 +44,12 @@ args = ["-y", "package-registry-mcp"]
 command = "playwright-mcp"
 args = ["--browser=webkit", "--isolated"]
 
+[mcp_servers.slack_mirabridge]
+command = "slack-mcp-server"
+args = ["--transport", "stdio"]
+env.SLACK_MCP_XOXC_TOKEN = "{{ trim (gopass "mirabridge/slack/xoxc") }}"
+env.SLACK_MCP_XOXD_TOKEN = "{{ trim (gopass "mirabridge/slack/xoxd") }}"
+
 [mcp_servers.terraform]
 command = "terraform-mcp-server"
 args = ["stdio"]
-
-[mcp_servers.genesys_bnp]
-command = "npx"
-args = ["-y", "@makingchatbots/genesys-cloud-mcp-server"]
-
-[mcp_servers.genesys_bnp.env]
-GENESYSCLOUD_REGION = "{{ trim (gopass "genesys/bnp/region") }}"
-GENESYSCLOUD_OAUTHCLIENT_ID = "{{ trim (gopass "genesys/bnp/client/id") }}"
-GENESYSCLOUD_OAUTHCLIENT_SECRET = "{{ trim (gopass "genesys/bnp/client/secret") }}"
-
-[mcp_servers.jira_yarrl]
-command = "mcp-atlassian"
-args = [
-  "--transport=stdio",
-  "--jira-url={{ trim (gopass "yarrl/atlassian/url") }}",
-  "--jira-username={{ trim (gopass "yarrl/atlassian/user") }}",
-  "--jira-token={{ trim (gopass "yarrl/atlassian/token") }}",
-]
-
-[mcp_servers.slack]
-command = "npx"
-args = ["-y", "slack-mcp-server@latest", "--transport", "stdio"]
-
-[mcp_servers.slack.env]
-SLACK_MCP_XOXC_TOKEN = "{{ trim (gopass "mirabridge/slack/xoxc") }}"
-SLACK_MCP_XOXD_TOKEN = "{{ trim (gopass "mirabridge/slack/xoxd") }}"
