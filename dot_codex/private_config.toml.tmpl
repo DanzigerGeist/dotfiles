@@ -56,6 +56,9 @@ env.GITHUB_PERSONAL_ACCESS_TOKEN = "{{ trim (gopass "personal/github/tokens/pers
 [mcp_servers.grep_app]
 command = "grep-mcp"
 args = []
+[mcp_servers.openai_developer_docs]
+url = "https://developers.openai.com/mcp"
+
 [mcp_servers.package_registry]
 command = "npx"
 args = ["-y", "package-registry-mcp"]
@@ -70,7 +73,12 @@ args = ["--transport", "stdio"]
 env.SLACK_MCP_XOXC_TOKEN = "{{ trim (gopass "mirabridge/slack/xoxc") }}"
 env.SLACK_MCP_XOXD_TOKEN = "{{ trim (gopass "mirabridge/slack/xoxd") }}"
 
+[mcp_servers.snyk]
+command = "snyk"
+args = ["mcp", "-t", "stdio"]
+
 [mcp_servers.terraform]
 command = "terraform-mcp-server"
 args = ["stdio"]
+
 
