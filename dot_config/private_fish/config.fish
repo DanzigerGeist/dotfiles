@@ -153,7 +153,7 @@ if status is-interactive
         set fish_tmux_fixterm true
         set fish_tmux_fixterm_with_256color xterm-256color
         set fish_tmux_fixterm_without_256color xterm
-        set fish_tmux_autostart false
+        set fish_tmux_autostart true
     end
 
     if command -sq opam
