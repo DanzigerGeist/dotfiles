@@ -48,7 +48,7 @@
         "JIRA_API_TOKEN": "{{ trim (gopass "yarrl/atlassian/token") }}"
       }
     },
-    "slack_mirabridge": {
+    "slack": {
       "type": "local",
       "command": ["slack-mcp-server", "--transport", "stdio"],
       "environment": {
@@ -56,7 +56,7 @@
         "SLACK_MCP_XOXD_TOKEN": "{{ trim (gopass "mirabridge/slack/xoxd") }}"
       }
     },
-    "package_registry": {
+    "packages": {
       "type": "local",
       "command": ["npx", "-y", "package-registry-mcp"]
     },
