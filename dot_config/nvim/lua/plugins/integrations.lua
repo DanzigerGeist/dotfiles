@@ -13,25 +13,21 @@ local toggleterm = {
     local lazydocker = Terminal:new({ cmd = "lazydocker", hidden = true, direction = "float", name = "lazyDocker" })
 
     function CustomToggleLazySQL() lazysql:toggle() end
+
     function CustomToggleLazyDocker() lazydocker:toggle() end
+
     function CustomToggleJira() jirust:toggle() end
+
     function CustomToggleAtac() atac:toggle() end
   end
 }
 
 local wakatime = { 'wakatime/vim-wakatime', lazy = false }
 
-local copilotChat = {
-  "CopilotC-Nvim/CopilotChat.nvim",
+local opencode = {
+  "nickjvandyke/opencode.nvim",
   dependencies = {
-    { "zbirenbaum/copilot.lua" },
-    { "nvim-lua/plenary.nvim", branch = "master" }
-  },
-  build = "make tiktoken",
-  opts = {
-    window = {
-      width = 0.3,
-    }
+    "folke/snacks.nvim",
   }
 }
 
@@ -49,4 +45,4 @@ local octo = {
   },
 }
 
-return { toggleterm, wakatime, copilotChat, octo }
+return { toggleterm, wakatime, opencode, octo }

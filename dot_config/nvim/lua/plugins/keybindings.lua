@@ -50,22 +50,21 @@ local function flatten_commands(entries, current_prefix)
 end
 
 local mappings = {
-  group('a', 'AI (Copilot)', '', {
-    command('o', 'CopilotChatOpen', 'Open Chat', ''),
-    command('c', 'CopilotChatClose', 'Close Chat', ''),
-    command('C', 'CopilotChatToggle', 'Toggle Chat', ''),
-    command('s', 'CopilotChatStop', 'Stop Chat Output', ''),
-    command('r', 'CopilotChatReset', 'Reset Chat', ''),
-    command('p', 'CopilotChatPrompts', 'List Prompts', ''),
-    command('m', 'CopilotChatModels', 'List Models', ''),
-    command('a', 'CopilotChatAgents', 'List Agents', ''),
-    command('e', 'CopilotChatExplain', 'Explain', '', 'v'),
-    command('r', 'CopilotChatReview', 'Review', '', 'v'),
-    command('f', 'CopilotChatFix', 'Fix', '', 'v'),
-    command('o', 'CopilotChatOptimize', 'Optimize', '', 'v'),
-    command('d', 'CopilotChatDocs', 'Docs', '', 'v'),
-    command('t', 'CopilotChatTests', 'Tests', '', 'v'),
-    command('c', 'CopilotChatCommit', 'Commit', '', 'v'),
+  group('a', 'AI (OpenCode)', '', {
+    command('o', 'lua require("opencode").toggle()', 'Toggle OpenCode', ''),
+    command('a', 'lua require("opencode").ask("@this: ", { submit = true })', 'Ask (@this)', '', { 'n', 'x' }),
+    command('p', 'lua require("opencode").select()', 'Action Picker', ''),
+    command('n', 'lua require("opencode").command("session.new")', 'New Session', ''),
+    command('s', 'lua require("opencode").command("session.select")', 'Select Session', ''),
+    command('c', 'lua require("opencode").command("session.compact")', 'Compact Session', ''),
+    command('u', 'lua require("opencode").command("session.undo")', 'Undo', ''),
+    command('r', 'lua require("opencode").command("session.redo")', 'Redo', ''),
+    command('i', 'lua require("opencode").command("session.interrupt")', 'Interrupt', ''),
+    command('h', 'lua require("opencode").command("session.share")', 'Share Session', ''),
+    command('e', 'lua require("opencode").prompt("explain")', 'Explain', '', 'v'),
+    command('v', 'lua require("opencode").prompt("review")', 'Review', '', 'v'),
+    command('f', 'lua require("opencode").prompt("fix")', 'Fix', '', 'v'),
+    command('t', 'lua require("opencode").prompt("test")', 'Tests', '', 'v'),
   }),
   group('b', 'Buffers', '󰱾', {
     command('l', 'lua Snacks.picker.buffers()', 'List', '󰱾'),
@@ -87,8 +86,6 @@ local mappings = {
     command('r', 'Lspsaga rename', 'Rename', '󰑕'),
     command('a', 'Lspsaga code_action', 'Actions', ''),
     command('o', 'Lspsaga outline', 'Outline', '󰊕'),
-    command('c', 'CodeCompanionChat Toggle', 'Copilot Chat', ''),
-    command('A', 'CodeCompanionActions', 'Copilot Actions', ''),
     group('g', 'Go To...', '', {
       command('d', 'lua Snacks.picker.lsp_definitions()', 'Definition', '󰊕'),
       command('D', 'lua Snacks.picker.lsp_declarations()', 'Declaration', '󰊕'),

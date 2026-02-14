@@ -22,22 +22,19 @@ local cmp_setup = function()
 			completion = cmp.config.window.bordered(),
 			documentation = cmp.config.window.bordered(),
 		},
-		sources = {
-			{ name = "copilot" },
-			{ name = "nvim_lsp" },
-			{ name = "nvim_lsp_signature_help" },
-			{ name = "lazydev", group_index = 0 },
-			{ name = "vsnip" },
-			{ name = "omni" },
-			{ name = "pypi" },
-			{ name = "go_pkgs" },
-			{ name = "luasnip" },
-			{ name = "buffer" },
-			{ name = "path" },
-			per_filetype = {
-				codecompanion = { "codecompanion" },
+			sources = {
+				{ name = "copilot" },
+				{ name = "nvim_lsp" },
+				{ name = "nvim_lsp_signature_help" },
+				{ name = "lazydev", group_index = 0 },
+				{ name = "vsnip" },
+				{ name = "omni" },
+				{ name = "pypi" },
+				{ name = "go_pkgs" },
+				{ name = "luasnip" },
+				{ name = "buffer" },
+				{ name = "path" },
 			},
-		},
 		formatting = {
 			format = lspkind.cmp_format({
 				preset = "codicons",
@@ -119,17 +116,8 @@ local nvim_cmp = {
 		{ "Snikimonkd/cmp-go-pkgs" },
 		-- { 'samiulsami/cmp-go-pkgs', branch = 'minor-tweaks' },
 		{ "petertriho/cmp-git" },
-		{ "olimorris/codecompanion.nvim" },
 	},
 	config = cmp_setup,
 }
 
-local codecompanion = {
-	"olimorris/codecompanion.nvim",
-	config = true,
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-	},
-}
-
-return { nvim_cmp, codecompanion }
+return { nvim_cmp }

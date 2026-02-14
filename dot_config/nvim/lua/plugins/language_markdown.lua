@@ -15,7 +15,7 @@ local markview = {
   priority = 49,
   opts = {
     preview = {
-      filetypes = { "markdown", "codecompanion", "copilot-chat" },
+      filetypes = { "markdown" },
       ignore_buftypes = {},
     },
   },
