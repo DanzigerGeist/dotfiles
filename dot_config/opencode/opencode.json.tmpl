@@ -13,6 +13,62 @@
       }
     }
   },
+  "mcp": {
+    "genesys_bnp": {
+      "type": "local",
+      "command": ["npx", "-y", "@makingchatbots/genesys-cloud-mcp-server"],
+      "environment": {
+        "GENESYSCLOUD_REGION": "{{ trim (gopass "yarrl/genesys/bnp/region") }}",
+        "GENESYSCLOUD_OAUTHCLIENT_ID": "{{ trim (gopass "yarrl/genesys/bnp/client/id") }}",
+        "GENESYSCLOUD_OAUTHCLIENT_SECRET": "{{ trim (gopass "yarrl/genesys/bnp/client/secret") }}"
+      }
+    },
+    "genesys_inpost": {
+      "type": "local",
+      "command": ["npx", "-y", "@makingchatbots/genesys-cloud-mcp-server"],
+      "environment": {
+        "GENESYSCLOUD_REGION": "{{ trim (gopass "yarrl/genesys/inpost/region") }}",
+        "GENESYSCLOUD_OAUTHCLIENT_ID": "{{ trim (gopass "yarrl/genesys/inpost/client/id") }}",
+        "GENESYSCLOUD_OAUTHCLIENT_SECRET": "{{ trim (gopass "yarrl/genesys/inpost/client/secret") }}"
+      }
+    },
+    "github": {
+      "type": "local",
+      "command": ["github-mcp-server", "stdio", "--toolsets=all"],
+      "environment": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "{{ trim (gopass "personal/github/tokens/personal") }}"
+      }
+    },
+    "atlassian_yarrl": {
+      "type": "local",
+      "command": ["mcp-atlassian", "--transport=stdio"],
+      "environment": {
+        "JIRA_URL": "{{ trim (gopass "yarrl/atlassian/url") }}",
+        "JIRA_USERNAME": "{{ trim (gopass "yarrl/atlassian/user") }}",
+        "JIRA_API_TOKEN": "{{ trim (gopass "yarrl/atlassian/token") }}"
+      }
+    },
+    "slack_mirabridge": {
+      "type": "local",
+      "command": ["slack-mcp-server", "--transport", "stdio"],
+      "environment": {
+        "SLACK_MCP_XOXC_TOKEN": "{{ trim (gopass "mirabridge/slack/xoxc") }}",
+        "SLACK_MCP_XOXD_TOKEN": "{{ trim (gopass "mirabridge/slack/xoxd") }}"
+      }
+    },
+    "package_registry": {
+      "type": "local",
+      "command": ["npx", "-y", "package-registry-mcp"]
+    },
+    "playwright": {
+      "type": "local",
+      "command": ["playwright-mcp", "--browser=webkit", "--isolated"]
+    },
+    "terraform": {
+      "type": "local",
+      "command": ["terraform-mcp-server", "stdio"]
+    }
+  },
   "default_agent": "plan",
   "share": "disabled",
   "keybinds": {
