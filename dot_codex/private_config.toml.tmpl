@@ -22,6 +22,18 @@ status_line = [
   "context-remaining",
 ]
 
+[mcp_servers.atlassian_yarrl]
+command = "mcp-atlassian"
+args = ["--transport=stdio"]
+env.JIRA_URL = "{{ trim (gopass "yarrl/atlassian/url") }}"
+env.JIRA_USERNAME = "{{ trim (gopass "yarrl/atlassian/user") }}"
+env.JIRA_API_TOKEN = "{{ trim (gopass "yarrl/atlassian/token") }}"
+
+[mcp_servers.context7]
+command = "context7-mcp"
+args = []
+env.CONTEXT7_API_KEY = "{{ trim (gopass "personal/context7/token") }}"
+
 [mcp_servers.genesys_bnp]
 command = "npx"
 args = ["-y", "@makingchatbots/genesys-cloud-mcp-server"]
@@ -36,18 +48,14 @@ env.GENESYSCLOUD_REGION = "{{ trim (gopass "yarrl/genesys/inpost/region") }}"
 env.GENESYSCLOUD_OAUTHCLIENT_ID = "{{ trim (gopass "yarrl/genesys/inpost/client/id") }}"
 env.GENESYSCLOUD_OAUTHCLIENT_SECRET = "{{ trim (gopass "yarrl/genesys/inpost/client/secret") }}"
 
-[mcp_servers.github_personal]
+[mcp_servers.github]
 command = "github-mcp-server"
 args = ["stdio", "--toolsets=all"]
 env.GITHUB_PERSONAL_ACCESS_TOKEN = "{{ trim (gopass "personal/github/tokens/personal") }}"
 
-[mcp_servers.atlassian_yarrl]
-command = "mcp-atlassian"
-args = ["--transport=stdio"]
-env.JIRA_URL = "{{ trim (gopass "yarrl/atlassian/url") }}"
-env.JIRA_USERNAME = "{{ trim (gopass "yarrl/atlassian/user") }}"
-env.JIRA_API_TOKEN = "{{ trim (gopass "yarrl/atlassian/token") }}"
-
+[mcp_servers.grep_app]
+command = "grep-mcp"
+args = []
 [mcp_servers.package_registry]
 command = "npx"
 args = ["-y", "package-registry-mcp"]
@@ -65,3 +73,4 @@ env.SLACK_MCP_XOXD_TOKEN = "{{ trim (gopass "mirabridge/slack/xoxd") }}"
 [mcp_servers.terraform]
 command = "terraform-mcp-server"
 args = ["stdio"]
+
