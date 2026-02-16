@@ -8,6 +8,15 @@
 {{- end -}}
 
 {{- $mcpServers := dict
+  "atlassian_miratech" (dict
+    "command" "mcp-atlassian"
+    "args" (list "--transport=stdio")
+    "env" (dict
+      "JIRA_URL" (trim (gopass "miratech/atlassian/url"))
+      "JIRA_USERNAME" (trim (gopass "miratech/atlassian/user"))
+      "JIRA_API_TOKEN" (trim (gopass "miratech/atlassian/token"))
+    )
+  )
   "atlassian_yarrl" (dict
     "command" "mcp-atlassian"
     "args" (list "--transport=stdio")

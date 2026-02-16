@@ -1,6 +1,78 @@
 {
   "preferences": {
-    "coworkScheduledTasksEnabled": false,
+    "coworkScheduledTasksEnabled": true,
     "sidebarMode": "chat"
+  },
+  "mcpServers": {
+    "Apple Mail": {
+      "command": "/Users/aleksy/.local/bin/apple-mail-mcp",
+      "args": []
+    },
+    "Apple Mail - Miratech": {
+      "command": "npx",
+      "args": [
+        "-y", "mcp-remote@latest",
+        "https://miratech-vm.tail4721f4.ts.net/sse",
+        "--header",
+        "Authorization: Bearer {{ trim (gopass "miratech/apple-mail-mcp/token") }}"
+      ]
+    },
+    "Genesys Cloud (BNP)": {
+      "command": "npx",
+      "args": ["-y", "@makingchatbots/genesys-cloud-mcp-server"],
+      "env": {
+        "GENESYSCLOUD_REGION": "{{ trim (gopass "yarrl/genesys/bnp/region") }}",
+        "GENESYSCLOUD_OAUTHCLIENT_ID": "{{ trim (gopass "yarrl/genesys/bnp/client/id") }}",
+        "GENESYSCLOUD_OAUTHCLIENT_SECRET": "{{ trim (gopass "yarrl/genesys/bnp/client/secret") }}"
+      }
+    },
+    "Genesys Cloud (InPost)": {
+      "command": "npx",
+      "args": ["-y", "@makingchatbots/genesys-cloud-mcp-server"],
+      "env": {
+        "GENESYSCLOUD_REGION": "{{ trim (gopass "yarrl/genesys/inpost/region") }}",
+        "GENESYSCLOUD_OAUTHCLIENT_ID": "{{ trim (gopass "yarrl/genesys/inpost/client/id") }}",
+        "GENESYSCLOUD_OAUTHCLIENT_SECRET": "{{ trim (gopass "yarrl/genesys/inpost/client/secret") }}"
+      }
+    },
+{{- /* "MS365 - Miratech": { "command": "npx", "args": ["-y", "@softeria/ms-365-mcp-server", "--org-mode"] }, */ -}}
+    "iMCP": {
+      "command": "/Applications/iMCP.app/Contents/MacOS/imcp-server",
+      "args": []
+    },
+    "Jira (Miratech)": {
+      "command": "mcp-atlassian",
+      "args": ["--transport=stdio"],
+      "env": {
+        "JIRA_URL": "{{ trim (gopass "miratech/atlassian/url") }}",
+        "JIRA_USERNAME": "{{ trim (gopass "miratech/atlassian/user") }}",
+        "JIRA_API_TOKEN": "{{ trim (gopass "miratech/atlassian/token") }}"
+      }
+    },
+    "Jira (Yarrl)": {
+      "command": "mcp-atlassian",
+      "args": ["--transport=stdio"],
+      "env": {
+        "JIRA_URL": "{{ trim (gopass "yarrl/atlassian/url") }}",
+        "JIRA_USERNAME": "{{ trim (gopass "yarrl/atlassian/user") }}",
+        "JIRA_API_TOKEN": "{{ trim (gopass "yarrl/atlassian/token") }}"
+      }
+    },
+    "Package Registry": {
+      "command": "npx",
+      "args": ["-y", "package-registry-mcp"]
+    },
+    "Playwright": {
+      "command": "playwright-mcp",
+      "args": ["--browser=webkit", "--isolated"]
+    },
+    "Snyk": {
+      "command": "snyk",
+      "args": ["mcp", "-t", "stdio"]
+    },
+    "Terraform": {
+      "command": "terraform-mcp-server",
+      "args": ["stdio"]
+    }
   }
 }
