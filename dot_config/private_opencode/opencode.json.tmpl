@@ -96,6 +96,7 @@
   )
 -}}
 
+{{- $_ := unset $existing "keybinds" -}}
 {{- $_ := set $existing "$schema" "https://opencode.ai/config.json" -}}
 {{- $_ := set $existing "plugin" (list "oh-my-opencode@latest" "@franlol/opencode-md-table-formatter@0.0.3" "@mohak34/opencode-notifier@latest" "opencode-wakatime") -}}
 {{- $_ := set $existing "mcp" $mcp -}}

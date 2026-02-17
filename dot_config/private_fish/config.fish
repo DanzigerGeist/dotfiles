@@ -142,6 +142,10 @@ if status is-interactive
         fish_add_path $PIPX_BIN_DIR
     end
 
+    if command -sq snyk
+        set -gx SNYK_CACHE_PATH $HOME/.cache/snyk
+    end
+
     if command -sq thefuck
         thefuck --alias | source
     end
