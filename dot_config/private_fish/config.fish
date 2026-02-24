@@ -64,7 +64,8 @@ if status is-interactive
     end
 
     if command -sq bun
-        fish_add_path $HOME/.bun/bin
+        set -gx BUN_INSTALL $HOME/.bun
+        fish_add_path $BUN_INSTALL/bin
     end
 
     if command -sq cargo
@@ -113,15 +114,8 @@ if status is-interactive
     end
 
     if command -sq kubectl
-        if set -q KREW_ROOT
-            set -l krew_bin $KREW_ROOT/.krew/bin
-        else
-            set -l krew_bin $HOME/.krew/bin
-        end
-
-        if test -d $krew_bin
-            fish_add_path $krew_bin
-        end
+        set -gx KREW_ROOT $HOME/.krew
+        fish_add_path $KREW_ROOT/bin
     end
 
     if command -sq nchat
@@ -138,7 +132,8 @@ if status is-interactive
     end
 
     if command -sq pipx
-        set -gx PIPX_BIN_DIR $HOME/.local/bin
+        set -gx PIPX_HOME $HOME/.pipx
+        set -gx PIPX_BIN_DIR $PIPX_HOME/bin
         fish_add_path $PIPX_BIN_DIR
     end
 
@@ -162,6 +157,11 @@ if status is-interactive
 
     if command -sq opam
         test -r '/Users/aleksy/.opam/opam-init/init.fish' && source '/Users/aleksy/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+    end
+
+    if command -sq volta
+        set -gx VOLTA_HOME $HOME/.volta
+        fish_add_path $VOLTA_HOME/bin
     end
 
     set sponge_purge_only_on_exit true
