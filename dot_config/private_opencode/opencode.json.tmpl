@@ -6,41 +6,91 @@
     {{- $existing = mustFromJson $raw -}}
   {{- end -}}
 {{- end -}}
+{{- $yarrlAtlassianURL := trim (gopass "yarrl/atlassian/url") -}}
+{{- $yarrlAtlassianUser := trim (gopass "yarrl/atlassian/user") -}}
+{{- $yarrlAtlassianToken := trim (gopass "yarrl/atlassian/token") -}}
+{{- $miratechAtlassianURL := trim (gopass "miratech/atlassian/url") -}}
+{{- $miratechAtlassianUser := trim (gopass "miratech/atlassian/user") -}}
+{{- $miratechAtlassianToken := trim (gopass "miratech/atlassian/token") -}}
+{{- $discogsToken := trim (gopass "personal/discogs/token") -}}
 
 {{- $mcp := dict
-  "context7" (dict
+  "Atlassian (Miratech)" (dict
+    "type" "local"
+    "command" (list
+      "/opt/homebrew/bin/mcp-atlassian"
+      "--transport" "stdio"
+      "--jira-url" $miratechAtlassianURL
+      "--jira-username" $miratechAtlassianUser
+      "--jira-token" $miratechAtlassianToken
+      "--confluence-url" (printf "%s/wiki" $miratechAtlassianURL)
+      "--confluence-username" $miratechAtlassianUser
+      "--confluence-token" $miratechAtlassianToken
+      "--toolsets=all"
+    )
+  )
+  "Atlassian (Yarrl)" (dict
+    "type" "local"
+    "command" (list
+      "/opt/homebrew/bin/mcp-atlassian"
+      "--transport" "stdio"
+      "--jira-url" $yarrlAtlassianURL
+      "--jira-username" $yarrlAtlassianUser
+      "--jira-token" $yarrlAtlassianToken
+      "--confluence-url" (printf "%s/wiki" $yarrlAtlassianURL)
+      "--confluence-username" $yarrlAtlassianUser
+      "--confluence-token" $yarrlAtlassianToken
+      "--toolsets=all"
+    )
+  )
+  "Discogs" (dict
+    "type" "local"
+    "command" (list "npx" "-y" "discogs-mcp-server")
+    "environment" (dict
+      "DISCOGS_PERSONAL_ACCESS_TOKEN" $discogsToken
+    )
+  )
+  "Context7" (dict
     "type" "local"
     "command" (list "context7-mcp")
     "environment" (dict
       "CONTEXT7_API_KEY" (trim (gopass "personal/context7/token"))
     )
   )
-  "github" (dict
+  "GitHub" (dict
     "type" "local"
     "command" (list "github-mcp-server" "stdio" "--toolsets=all")
     "environment" (dict
       "GITHUB_PERSONAL_ACCESS_TOKEN" (trim (gopass "personal/github/tokens/personal"))
     )
   )
-  "packages" (dict
+  "iMCP" (dict
+    "type" "local"
+    "command" (list "/Applications/iMCP.app/Contents/MacOS/imcp-server")
+  )
+  "Packages" (dict
     "type" "local"
     "command" (list "npx" "-y" "package-registry-mcp")
   )
-  "playwright" (dict
+  "Playwright" (dict
     "type" "local"
     "command" (list "playwright-mcp" "--browser=webkit" "--isolated")
   )
-  "snyk" (dict
+  "Snyk" (dict
     "type" "local"
     "command" (list "snyk" "mcp" "-t" "stdio")
   )
-  "terraform" (dict
+  "Terraform" (dict
     "type" "local"
     "command" (list "terraform-mcp-server" "stdio")
   )
-  "websearch" (dict
+  "Web Search" (dict
     "type" "local"
     "command" (list "npx" "-y" "exa-mcp-server")
+  )
+  "WorkIQ (Yarrl)" (dict
+    "type" "local"
+    "command" (list "/Users/aleksy/.volta/bin/workiq" "mcp")
   )
 -}}
 
