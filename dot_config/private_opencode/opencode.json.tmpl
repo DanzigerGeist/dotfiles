@@ -8,51 +8,11 @@
 {{- end -}}
 
 {{- $mcp := dict
-  "atlassian_miratech" (dict
-    "type" "local"
-    "command" (list "mcp-atlassian" "--transport=stdio")
-    "environment" (dict
-      "JIRA_URL" (trim (gopass "miratech/atlassian/url"))
-      "JIRA_USERNAME" (trim (gopass "miratech/atlassian/user"))
-      "JIRA_API_TOKEN" (trim (gopass "miratech/atlassian/token"))
-    )
-  )
-  "atlassian_yarrl" (dict
-    "type" "local"
-    "command" (list "mcp-atlassian" "--transport=stdio")
-    "environment" (dict
-      "JIRA_URL" (trim (gopass "yarrl/atlassian/url"))
-      "JIRA_USERNAME" (trim (gopass "yarrl/atlassian/user"))
-      "JIRA_API_TOKEN" (trim (gopass "yarrl/atlassian/token"))
-    )
-  )
-  "apple_mail" (dict
-    "type" "local"
-    "command" (list (joinPath .chezmoi.homeDir ".local/bin/apple-mail-mcp"))
-  )
   "context7" (dict
     "type" "local"
     "command" (list "context7-mcp")
     "environment" (dict
       "CONTEXT7_API_KEY" (trim (gopass "personal/context7/token"))
-    )
-  )
-  "genesys_bnp" (dict
-    "type" "local"
-    "command" (list "npx" "-y" "@makingchatbots/genesys-cloud-mcp-server")
-    "environment" (dict
-      "GENESYSCLOUD_REGION" (trim (gopass "yarrl/genesys/bnp/region"))
-      "GENESYSCLOUD_OAUTHCLIENT_ID" (trim (gopass "yarrl/genesys/bnp/client/id"))
-      "GENESYSCLOUD_OAUTHCLIENT_SECRET" (trim (gopass "yarrl/genesys/bnp/client/secret"))
-    )
-  )
-  "genesys_inpost" (dict
-    "type" "local"
-    "command" (list "npx" "-y" "@makingchatbots/genesys-cloud-mcp-server")
-    "environment" (dict
-      "GENESYSCLOUD_REGION" (trim (gopass "yarrl/genesys/inpost/region"))
-      "GENESYSCLOUD_OAUTHCLIENT_ID" (trim (gopass "yarrl/genesys/inpost/client/id"))
-      "GENESYSCLOUD_OAUTHCLIENT_SECRET" (trim (gopass "yarrl/genesys/inpost/client/secret"))
     )
   )
   "github" (dict
@@ -62,14 +22,6 @@
       "GITHUB_PERSONAL_ACCESS_TOKEN" (trim (gopass "personal/github/tokens/personal"))
     )
   )
-  "grep_app" (dict
-    "type" "local"
-    "command" (list "grep-mcp")
-  )
-  "openai_developer_docs" (dict
-    "type" "remote"
-    "url" "https://developers.openai.com/mcp"
-  )
   "packages" (dict
     "type" "local"
     "command" (list "npx" "-y" "package-registry-mcp")
@@ -77,14 +29,6 @@
   "playwright" (dict
     "type" "local"
     "command" (list "playwright-mcp" "--browser=webkit" "--isolated")
-  )
-  "slack_mirabridge" (dict
-    "type" "local"
-    "command" (list "slack-mcp-server" "--transport" "stdio")
-    "environment" (dict
-      "SLACK_MCP_XOXC_TOKEN" (trim (gopass "mirabridge/slack/xoxc"))
-      "SLACK_MCP_XOXD_TOKEN" (trim (gopass "mirabridge/slack/xoxd"))
-    )
   )
   "snyk" (dict
     "type" "local"
@@ -94,10 +38,14 @@
     "type" "local"
     "command" (list "terraform-mcp-server" "stdio")
   )
+  "websearch" (dict
+    "type" "local"
+    "command" (list "npx" "-y" "exa-mcp-server")
+  )
 -}}
 
 {{- $_ := unset $existing "keybinds" -}}
 {{- $_ := set $existing "$schema" "https://opencode.ai/config.json" -}}
-{{- $_ := set $existing "plugin" (list "oh-my-opencode@latest" "@franlol/opencode-md-table-formatter@0.0.3" "@mohak34/opencode-notifier@latest" "opencode-wakatime") -}}
+{{- $_ := set $existing "plugin" (list "oh-my-opencode@latest" "@franlol/opencode-md-table-formatter@0.0.3" "opencode-wakatime") -}}
 {{- $_ := set $existing "mcp" $mcp -}}
 {{ mustToPrettyJson $existing }}
