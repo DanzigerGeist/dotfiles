@@ -23,6 +23,7 @@
 {{- $playwrightMcpPath := joinPath $homebrewBinDir "playwright-mcp" -}}
 {{- $snykPath := joinPath $homebrewBinDir "snyk" -}}
 {{- $terraformMcpPath := joinPath $homebrewBinDir "terraform-mcp-server" -}}
+{{- $slackMcpPath := joinPath $homebrewBinDir "slack-mcp-server" -}}
 {{- $uvxPath := joinPath $homebrewBinDir "uvx" -}}
 {{- $workiqPath := joinPath $voltaBinDir "workiq" -}}
 
@@ -91,6 +92,14 @@
   "Playwright" (dict
     "type" "local"
     "command" (list $playwrightMcpPath "--browser=webkit" "--isolated")
+  )
+  "Slack" (dict
+    "type" "local"
+    "command" (list $slackMcpPath)
+    "environment" (dict
+      "SLACK_MCP_XOXC_TOKEN" (trim (gopass "mirabridge/slack/xoxc"))
+      "SLACK_MCP_XOXD_TOKEN" (trim (gopass "mirabridge/slack/xoxd"))
+    )
   )
   "Snyk" (dict
     "type" "local"
