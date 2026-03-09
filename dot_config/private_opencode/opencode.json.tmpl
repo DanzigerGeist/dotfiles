@@ -13,12 +13,24 @@
 {{- $miratechAtlassianUser := trim (gopass "miratech/atlassian/user") -}}
 {{- $miratechAtlassianToken := trim (gopass "miratech/atlassian/token") -}}
 {{- $discogsToken := trim (gopass "personal/discogs/token") -}}
+{{- $homebrewBinDir := "/opt/homebrew/bin" -}}
+{{- $voltaBinDir := joinPath .chezmoi.homeDir ".volta/bin" -}}
+{{- $mcpAtlassianPath := joinPath $homebrewBinDir "mcp-atlassian" -}}
+{{- $context7McpPath := joinPath $homebrewBinDir "context7-mcp" -}}
+{{- $githubMcpPath := joinPath $homebrewBinDir "github-mcp-server" -}}
+{{- $imcpWrapperPath := joinPath .chezmoi.homeDir ".config/opencode/bin/imcp-opencode" -}}
+{{- $npxPath := joinPath $voltaBinDir "npx" -}}
+{{- $playwrightMcpPath := joinPath $homebrewBinDir "playwright-mcp" -}}
+{{- $snykPath := joinPath $homebrewBinDir "snyk" -}}
+{{- $terraformMcpPath := joinPath $homebrewBinDir "terraform-mcp-server" -}}
+{{- $uvxPath := joinPath $homebrewBinDir "uvx" -}}
+{{- $workiqPath := joinPath $voltaBinDir "workiq" -}}
 
 {{- $mcp := dict
   "Atlassian (Miratech)" (dict
     "type" "local"
     "command" (list
-      "/opt/homebrew/bin/mcp-atlassian"
+      $mcpAtlassianPath
       "--transport" "stdio"
       "--jira-url" $miratechAtlassianURL
       "--jira-username" $miratechAtlassianUser
@@ -32,7 +44,7 @@
   "Atlassian (Yarrl)" (dict
     "type" "local"
     "command" (list
-      "/opt/homebrew/bin/mcp-atlassian"
+      $mcpAtlassianPath
       "--transport" "stdio"
       "--jira-url" $yarrlAtlassianURL
       "--jira-username" $yarrlAtlassianUser
@@ -45,52 +57,56 @@
   )
   "Discogs" (dict
     "type" "local"
-    "command" (list "npx" "-y" "discogs-mcp-server")
+    "command" (list $npxPath "-y" "discogs-mcp-server")
     "environment" (dict
       "DISCOGS_PERSONAL_ACCESS_TOKEN" $discogsToken
     )
   )
   "Context7" (dict
     "type" "local"
-    "command" (list "context7-mcp")
+    "command" (list $context7McpPath)
     "environment" (dict
       "CONTEXT7_API_KEY" (trim (gopass "personal/context7/token"))
     )
   )
   "GitHub" (dict
     "type" "local"
-    "command" (list "github-mcp-server" "stdio" "--toolsets=all")
+    "command" (list $githubMcpPath "stdio" "--toolsets=all")
     "environment" (dict
       "GITHUB_PERSONAL_ACCESS_TOKEN" (trim (gopass "personal/github/tokens/personal"))
     )
   )
+  "GitHub Grep" (dict
+    "type" "local"
+    "command" (list $uvxPath "grep-mcp")
+  )
   "iMCP" (dict
     "type" "local"
-    "command" (list "/Applications/iMCP.app/Contents/MacOS/imcp-server")
+    "command" (list $imcpWrapperPath)
   )
   "Packages" (dict
     "type" "local"
-    "command" (list "npx" "-y" "package-registry-mcp")
+    "command" (list $npxPath "-y" "package-registry-mcp")
   )
   "Playwright" (dict
     "type" "local"
-    "command" (list "playwright-mcp" "--browser=webkit" "--isolated")
+    "command" (list $playwrightMcpPath "--browser=webkit" "--isolated")
   )
   "Snyk" (dict
     "type" "local"
-    "command" (list "snyk" "mcp" "-t" "stdio")
+    "command" (list $snykPath "mcp" "-t" "stdio")
   )
   "Terraform" (dict
     "type" "local"
-    "command" (list "terraform-mcp-server" "stdio")
+    "command" (list $terraformMcpPath "stdio")
   )
   "Web Search" (dict
     "type" "local"
-    "command" (list "npx" "-y" "exa-mcp-server")
+    "command" (list $npxPath "-y" "exa-mcp-server")
   )
   "WorkIQ (Yarrl)" (dict
     "type" "local"
-    "command" (list "/Users/aleksy/.volta/bin/workiq" "mcp")
+    "command" (list $workiqPath "mcp")
   )
 -}}
 

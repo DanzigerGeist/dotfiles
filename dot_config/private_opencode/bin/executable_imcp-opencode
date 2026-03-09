@@ -1,0 +1,54 @@
+#!/bin/bash
+set -euo pipefail
+
+app_path="/Applications/iMCP.app"
+server_path="$app_path/Contents/MacOS/imcp-server"
+open_path="/usr/bin/open"
+python_path="/usr/bin/python3"
+
+"$open_path" -ga "$app_path"
+
+"$python_path" -c '
+import signal
+import subprocess
+import time
+
+deadline = time.monotonic() + 15
+dns_sd = "/usr/bin/dns-sd"
+
+while time.monotonic() < deadline:
+    proc = subprocess.Popen(
+        [dns_sd, "-B", "_mcp._tcp", "local"],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+    )
+    found = False
+
+    try:
+        probe_deadline = time.monotonic() + 2
+        while time.monotonic() < probe_deadline:
+            line = proc.stdout.readline()
+            if not line:
+                time.sleep(0.1)
+                continue
+            if "_mcp._tcp." in line and "Add" in line:
+                found = True
+                break
+    finally:
+        if proc.poll() is None:
+            proc.send_signal(signal.SIGINT)
+            try:
+                proc.communicate(timeout=1)
+            except subprocess.TimeoutExpired:
+                proc.kill()
+                proc.communicate()
+
+    if found:
+        time.sleep(1)
+        break
+
+    time.sleep(0.5)
+'
+
+exec "$server_path" "$@"
